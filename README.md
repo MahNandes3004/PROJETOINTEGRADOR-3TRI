@@ -1,2 +1,2 @@
-# PROJETOINTEGRADOR-3TRI
+# projeto3trimestre
 Projeto integrador 3° Trimestre.
