@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Tecnologia, Ciência e Acessibilidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CABEÇALHO E ABAS -->
+    <header class="navbar">
+        <div class="logo">🚀 Ciência & Tecnologia Inclusiva</div>
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab(this, 'tab-projetos')">💻 Programação & IA</button>
+            <button class="tab-btn" onclick="openTab(this, 'tab-fisica')">⚛️ Física & Acessibilidade</button>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- ========================================================= -->
+        <!-- ABA 1: PROGRAMAÇÃO (SLIDES + 3 PROJETOS EM PYTHON)        -->
+        <!-- ========================================================= -->
+        <section id="tab-projetos" class="tab-content active">
+            
+            <!-- CARROSSEL DE SLIDES -->
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="slide active">
+                        <div class="slide-badge">Projeto 01 • Segurança Digital</div>
+                        <h2>🔐 Cofre Digital Interativo em Python</h2>
+                        <p>Algoritmo de criptografia e codificação Base64 desenvolvido para proteger senhas, contatos de emergência e dados pessoais de familiares contra golpes digitais.</p>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-badge">Projeto 02 • Inteligência Artificial</div>
+                        <h2>🧠 Engenharia de Prompt & Leitura Facilitada</h2>
+                        <p>Uso estratégico de Modelos de Linguagem (LLMs) para traduzir textos médicos e técnicos complexos em linguagem simples, garantindo autonomia cognitiva.</p>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-badge">Projeto 03 • Ciência de Dados</div>
+                        <h2>🥗 Modelo Computacional Nutricional</h2>
+                        <p>Sistema automatizado em Python que calcula calorias, macronutrientes, fibras e sódio, emitindo alertas preventivos para idosos, diabéticos e hipertensos.</p>
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" onclick="moveSlide(-1)" aria-label="Slide anterior">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)" aria-label="Próximo slide">&#10095;</button>
+
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="setSlide(0)"></span>
+                    <span class="dot" onclick="setSlide(1)"></span>
+                    <span class="dot" onclick="setSlide(2)"></span>
+                </div>
+            </div>
+
+            <!-- DETALHAMENTO DOS 3 PROJETOS -->
+            <h2 class="section-title">Os Três Projetos Desenvolvidos em Python</h2>
+            
+            <div class="cards-grid">
+                <article class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>1. Cofre Digital Interativo</h3>
+                    <p><b>O que faz:</b> Criptografa e descriptografa mensagens e senhas através de uma chave secreta definida pelo usuário.</p>
+                    <p><b>Motivo:</b> Ajudar pessoas com pouca familiaridade tecnológica a guardar informações confidenciais com segurança no dia a dia.</p>
+                    <p><b>Base técnica:</b> Manipulação de bytes UTF-8, aritmética modular e conversão em Base64.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>2. IA e Leitura Facilitada</h3>
+                    <p><b>O que faz:</b> Estrutura instruções avançadas (prompts) para que a IA adapte textos difíceis para uma leitura direta, curta e visual.</p>
+                    <p><b>Motivo:</b> Eliminar barreiras de compreensão em bulas de remédios e contratos para idosos, pessoas com dislexia ou baixo letramento.</p>
+                    <p><b>Base técnica:</b> Engenharia de Prompt com definição de persona, regras de tamanho de frase e formatação inclusiva.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🥗</div>
+                    <h3>3. Análise Nutricional Automatizada</h3>
+                    <p><b>O que faz:</b> Calcula proporcionalmente os nutrientes de uma refeição com base no peso (gramas) de cada alimento inserido.</p>
+                    <p><b>Motivo:</b> Democratizar o acompanhamento alimentar para pessoas com restrições clínicas, como hipertensão e diabetes.</p>
+                    <p><b>Base técnica:</b> Dicionários aninhados em Python, cálculo proporcional e sistema de alertas preventivos.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- ABA 2: FÍSICA (CÓDIGO MORSE, PAINÉIS DE LED E MOBILIDADE) -->
+        <!-- ========================================================= -->
+        <section id="tab-fisica" class="tab-content">
+            
+            <div class="physics-hero">
+                <h2>⚛️ Física Aplicada: Código Morse, Painéis de LED e Mobilidade</h2>
+                <p>Como os princípios do eletromagnetismo, pulsos elétricos e ondas luminosas se unem à tecnologia assistiva para devolver a comunicação a pessoas com mobilidade reduzida.</p>
+            </div>
+
+            <div class="cards-grid">
+                <article class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>1. Pulsos Elétricos e Código Morse</h3>
+                    <p><b>Princípio Físico:</b> Transmissão de informação por meio da interrupção controlada de corrente elétrica (sinais binários: ligado/desligado).</p>
+                    <p><b>Na prática:</b> O Código Morse transforma letras em combinações de pulsos curtos (<b>•</b>) e longos (<b>—</b>), exigindo apenas um único canal de acionamento.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>2. Física dos Painéis de LED</h3>
+                    <p><b>Princípio Físico:</b> Eletroluminescência em semicondutores. Quando a corrente elétrica atravessa o diodo (LED), elétrons liberam energia na forma de fótons (luz visível).</p>
+                    <p><b>Vantagem:</b> Resposta luminosa instantânea, baixo consumo de energia e alto contraste visual à distância.</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">♿</div>
+                    <h3>3. Apoio à Mobilidade Reduzida</h3>
+                    <p><b>Impacto Social:</b> Pessoas com tetraplegia, ELA ou paralisia severa muitas vezes preservam apenas um movimento mínimo (como piscar ou soprar).</p>
+                    <p><b>Solução:</b> Sensores captam esse micro-movimento, convertem em pulsos de Código Morse e exibem pedidos de ajuda em painéis de LED.</p>
+                </article>
+            </div>
+
+            <!-- SIMULADOR DE PAINEL DE LED -->
+            <div class="simulator-box">
+                <h3>🔦 Simulador Interativo: Painel de LED em Código Morse</h3>
+                <p class="sim-desc">Teste como um único sensor de pulso aciona um painel luminoso de comunicação assistiva:</p>
+
+                <div class="led-stage">
+                    <div id="led-lamp" class="led-off"></div>
+                    <span id="led-status">Painel em Espera</span>
+                </div>
+
+                <div class="quick-phrases">
+                    <span>Frases rápidas de acessibilidade:</span>
+                    <button class="chip-btn" onclick="iniciarTransmissao('AJUDA')">🚨 AJUDA</button>
+                    <button class="chip-btn" onclick="iniciarTransmissao('AGUA')">💧 ÁGUA</button>
+                    <button class="chip-btn" onclick="iniciarTransmissao('SIM')">✅ SIM</button>
+                    <button class="chip-btn" onclick="iniciarTransmissao('NAO')">❌ NÃO</button>
+                </div>
+
+                <div class="sim-controls">
+                    <input type="text" id="morse-input" maxlength="20" placeholder="Ou digite uma palavra (ex: OLA)..." />
+                    <button class="action-btn" onclick="transmitirInput()">Transmitir no LED</button>
+                    <button class="stop-btn" onclick="pararTransmissao()">Parar</button>
+                </div>
+
+                <div class="morse-display">
+                    <small>Tradução em Pulsos (Curtos e Longos):</small>
+                    <div id="morse-output">• — • —</div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 - Projeto Interdisciplinar de Programação, IA e Física para Inclusão Digital</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
