@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Tecnologia, Ciência e Acessibilidade</title>
+    <title>Projeto Integrador • Programação, IA e Robótica Inclusiva</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- CABEÇALHO E ABAS -->
+    <!-- CABEÇALHO E NAVEGAÇÃO PRINCIPAL -->
     <header class="navbar">
-        <div class="logo">🚀 Ciência & Tecnologia Inclusiva</div>
+        <div class="logo">🚀 Projeto Integrador • Tecnologia & Acessibilidade</div>
         <nav class="nav-tabs">
-            <button class="tab-btn active" onclick="openTab(this, 'tab-projetos')">💻 Programação & IA</button>
-            <button class="tab-btn" onclick="openTab(this, 'tab-fisica')">⚛️ Física & Acessibilidade</button>
+            <button class="tab-btn active" onclick="openTab(this, 'tab-programacao')">💻 Programação & IA</button>
+            <button class="tab-btn" onclick="openTab(this, 'tab-robotica')">🤖 Robótica & Acessibilidade</button>
         </nav>
     </header>
 
     <main class="container">
 
-        <!-- ========================================================= -->
-        <!-- ABA 1: PROGRAMAÇÃO (SLIDES + 3 PROJETOS EM PYTHON)        -->
-        <!-- ========================================================= -->
-        <section id="tab-projetos" class="tab-content active">
+        <!-- ================================================================= -->
+        <!-- ABA 1: PROGRAMAÇÃO & IA (SLIDES + 3 PROJETOS EM PYTHON)           -->
+        <!-- ================================================================= -->
+        <section id="tab-programacao" class="tab-content active">
             
             <!-- CARROSSEL DE SLIDES -->
             <div class="carousel-container">
@@ -84,77 +84,218 @@
             </div>
         </section>
 
-        <!-- ========================================================= -->
-        <!-- ABA 2: FÍSICA (CÓDIGO MORSE, PAINÉIS DE LED E MOBILIDADE) -->
-        <!-- ========================================================= -->
-        <section id="tab-fisica" class="tab-content">
-            
-            <div class="physics-hero">
-                <h2>⚛️ Física Aplicada: Código Morse, Painéis de LED e Mobilidade</h2>
-                <p>Como os princípios do eletromagnetismo, pulsos elétricos e ondas luminosas se unem à tecnologia assistiva para devolver a comunicação a pessoas com mobilidade reduzida.</p>
-            </div>
+        <!-- ================================================================= -->
+        <!-- ABA 2: ROBÓTICA & ACESSIBILIDADE (PARTES A ATÉ J DO PDF)          -->
+        <!-- ================================================================= -->
+        <section id="tab-robotica" class="tab-content">
 
-            <div class="cards-grid">
-                <article class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>1. Pulsos Elétricos e Código Morse</h3>
-                    <p><b>Princípio Físico:</b> Transmissão de informação por meio da interrupção controlada de corrente elétrica (sinais binários: ligado/desligado).</p>
-                    <p><b>Na prática:</b> O Código Morse transforma letras em combinações de pulsos curtos (<b>•</b>) e longos (<b>—</b>), exigindo apenas um único canal de acionamento.</p>
-                </article>
+            <!-- MENU RÁPIDO DAS SEÇÕES DO TRABALHO -->
+            <nav class="sub-nav" aria-label="Navegação das partes do projeto">
+                <a href="#parte-a">A. Apresentação</a>
+                <a href="#parte-b">B. Matriz de LEDs</a>
+                <a href="#parte-c">C. Código Morse</a>
+                <a href="#parte-d">D. Display</a>
+                <a href="#parte-e">E. Comparação</a>
+                <a href="#parte-f">F. Qualidade de Vida</a>
+                <a href="#parte-g">G. Uso de IA</a>
+                <a href="#parte-h">H. Melhoria</a>
+                <a href="#parte-i">I. Conclusão</a>
+                <a href="#parte-j">J. Fontes</a>
+            </nav>
 
-                <article class="card">
-                    <div class="card-icon">💡</div>
-                    <h3>2. Física dos Painéis de LED</h3>
-                    <p><b>Princípio Físico:</b> Eletroluminescência em semicondutores. Quando a corrente elétrica atravessa o diodo (LED), elétrons liberam energia na forma de fótons (luz visível).</p>
-                    <p><b>Vantagem:</b> Resposta luminosa instantânea, baixo consumo de energia e alto contraste visual à distância.</p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">♿</div>
-                    <h3>3. Apoio à Mobilidade Reduzida</h3>
-                    <p><b>Impacto Social:</b> Pessoas com tetraplegia, ELA ou paralisia severa muitas vezes preservam apenas um movimento mínimo (como piscar ou soprar).</p>
-                    <p><b>Solução:</b> Sensores captam esse micro-movimento, convertem em pulsos de Código Morse e exibem pedidos de ajuda em painéis de LED.</p>
-                </article>
-            </div>
-
-            <!-- SIMULADOR DE PAINEL DE LED -->
-            <div class="simulator-box">
-                <h3>🔦 Simulador Interativo: Painel de LED em Código Morse</h3>
-                <p class="sim-desc">Teste como um único sensor de pulso aciona um painel luminoso de comunicação assistiva:</p>
-
-                <div class="led-stage">
-                    <div id="led-lamp" class="led-off"></div>
-                    <span id="led-status">Painel em Espera</span>
+            <!-- PARTE A: APRESENTAÇÃO DO TEMA -->
+            <article id="parte-a" class="doc-section hero-box">
+                <span class="part-badge">Parte A • Apresentação do Tema</span>
+                <h1>Tecnologia que Conecta: Comunicação, Autonomia e Inclusão</h1>
+                <p class="group-meta"><b>Integrantes do Grupo:</b> [Preencher com os nomes dos integrantes da equipe]</p>
+                
+                <div class="motriz-banner">
+                    <strong>🎯 Questão Motriz:</strong> “Como a ciência, a tecnologia e as ferramentas de Inteligência Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?”
                 </div>
 
-                <div class="quick-phrases">
-                    <span>Frases rápidas de acessibilidade:</span>
-                    <button class="chip-btn" onclick="iniciarTransmissao('AJUDA')">🚨 AJUDA</button>
-                    <button class="chip-btn" onclick="iniciarTransmissao('AGUA')">💧 ÁGUA</button>
-                    <button class="chip-btn" onclick="iniciarTransmissao('SIM')">✅ SIM</button>
-                    <button class="chip-btn" onclick="iniciarTransmissao('NAO')">❌ NÃO</button>
+                <div class="cards-grid three-cols">
+                    <div class="mini-card">
+                        <h3>♿ Acessibilidade</h3>
+                        <p>É garantir que qualquer pessoa, com ou sem deficiência, consiga usar espaços, objetos e informações com segurança e autonomia, sem depender o tempo todo de terceiros.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>💬 Comunicação</h3>
+                        <p>É o processo de expressar ideias, necessidades e sentimentos e compreender o que os outros transmitem, seja por fala, escrita, gestos, sons ou sinais visuais.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>🌱 Qualidade de Vida</h3>
+                        <p>Significa ter bem-estar físico, emocional e social, dignidade para tomar decisões próprias e participação ativa na escola, na família e na sociedade.</p>
+                    </div>
                 </div>
 
-                <div class="sim-controls">
-                    <input type="text" id="morse-input" maxlength="20" placeholder="Ou digite uma palavra (ex: OLA)..." />
-                    <button class="action-btn" onclick="transmitirInput()">Transmitir no LED</button>
-                    <button class="stop-btn" onclick="pararTransmissao()">Parar</button>
+                <div class="info-callout">
+                    <h4>🚧 Situação Concreta de Barreira na Comunicação</h4>
+                    <p>Imagine um paciente internado em um hospital ou um estudante com paralisia motora severa (ou afasia após um AVC) que não consegue falar nem escrever com caneta. Em um corredor movimentado ou quarto compartilhado, essa pessoa pode sentir dor, sede ou falta de ar e não conseguir avisar quem está por perto.</p>
+                    <p><b>O que vamos investigar:</b> Nosso grupo investigará como três recursos da Robótica — <b>Matriz de LEDs, Código Morse e Display</b> — funcionam na prática e como podem reduzir barreiras de comunicação para promover mais autonomia e qualidade de vida.</p>
                 </div>
+            </article>
 
-                <div class="morse-display">
-                    <small>Tradução em Pulsos (Curtos e Longos):</small>
-                    <div id="morse-output">• — • —</div>
+            <!-- PARTE B: MATRIZ DE LEDS -->
+            <article id="parte-b" class="doc-section">
+                <span class="part-badge">Parte B • Recurso 1</span>
+                <h2>🔲 Matriz de LEDs</h2>
+
+                <div class="two-col-layout">
+                    <div>
+                        <h3>Como funciona?</h3>
+                        <p>Uma matriz de LEDs é uma placa formada por vários diodos emissores de luz organizados em <b>linhas e colunas</b> (como uma grade, por exemplo, 8x8). Ao enviar corrente elétrica para coordenadas específicas de linha e coluna (técnica chamada de <i>multiplexação</i>), o microcontrolador acende apenas os pontos desejados muito rapidamente, formando desenhos, setas, letras ou símbolos luminosos.</p>
+
+                        <h3>Símbolos que comunicam</h3>
+                        <ul class="clean-list">
+                            <li><b>Emoções:</b> Rosto sorridente (bem-estar/alegria) ou rosto triste (desconforto/dor).</li>
+                            <li><b>Necessidades e Avisos:</b> Ponto de exclamação <code>!</code> (atenção), cruz ou <code>SOS</code> (pedido de ajuda urgente), gota (sede).</li>
+                            <li><b>Direção:</b> Setas apontando para saída de emergência, rampa acessível ou sala de atendimento.</li>
+                        </ul>
+
+                        <h3>Situação concreta de uso</h3>
+                        <p>Em uma escola ou unidade de saúde barulhenta, uma matriz de LEDs instalada na mesa de um aluno não verbal ou na parede de um corredor permite mostrar um ícone de <b>“Ajuda”</b> ou uma <b>seta direcional</b>, facilitando o entendimento imediato mesmo para pessoas surdas ou que ainda não sabem ler.</p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <b>✅ Vantagens:</b> Alta luminosidade, resposta instantânea e comunicação visual universal por ícones simples.
+                            </div>
+                            <div class="cons">
+                                <b>⚠️ Limitações:</b> Baixa resolução para textos longos; perda de visibilidade sob luz solar forte ou grandes distâncias; exige que o observador compreenda o significado do símbolo exibido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIMULADOR VISUAL DE MATRIZ 5x5 + ESPAÇO PARA PRINT -->
+                    <div class="interactive-panel">
+                        <h4>Prévia Interativa: Matriz de LEDs (5x5)</h4>
+                        <p class="panel-hint">Clique nos ícones para ver como os LEDs acendem de forma organizada:</p>
+                        
+                        <div id="led-matrix-grid" class="matrix-grid" aria-label="Matriz de LEDs simulada"></div>
+                        <div id="matrix-label" class="matrix-caption">Símbolo: Alegria / Tudo Bem</div>
+
+                        <div class="btn-group">
+                            <button class="chip-btn" onclick="renderMatrix('feliz')">😊 Alegria</button>
+                            <button class="chip-btn" onclick="renderMatrix('alerta')">⚠️ Atenção</button>
+                            <button class="chip-btn" onclick="renderMatrix('ajuda')">➕ Ajuda</button>
+                            <button class="chip-btn" onclick="renderMatrix('seta')">➡️ Direção</button>
+                        </div>
+
+                        <div class="media-placeholder">
+                            <strong>📸 Espaço para Imagem / Captura de Tela (Tinkercad)</strong>
+                            <p>[Inserir aqui o print do circuito da Matriz de LEDs no Tinkercad e explicar qual ícone ela está comunicando]</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </article>
 
-        </section>
+            <!-- PARTE C: CÓDIGO MORSE -->
+            <article id="parte-c" class="doc-section">
+                <span class="part-badge">Parte C • Recurso 2</span>
+                <h2>⚡ Código Morse</h2>
 
-    </main>
+                <div class="two-col-layout">
+                    <div>
+                        <h3>Como funciona?</h3>
+                        <p>O Código Morse é um sistema de representação de letras, números e pontuações por meio de combinações de <b>sinais curtos (pontos <code>•</code>)</b> e <b>sinais longos (traços <code>—</code>)</b>, separados por pequenas pausas.</p>
 
-    <footer>
-        <p>© 2026 - Projeto Integrador- Maiara, Nicoly & Bruna</p>
-    </footer>
+                        <h3>Circuito com Botão, LED e Buzzer</h3>
+                        <p>Em um projeto de Robótica (como no Arduino/Tinkercad), o circuito combina três elementos principais:</p>
+                        <ul class="clean-list">
+                            <li><b>Botão (Pushbutton):</b> Funciona como entrada de dados. Um toque rápido envia um pulso curto (<code>•</code>) e um toque demorado envia um pulso longo (<code>—</code>).</li>
+                            <li><b>LED:</b> Converte o pulso elétrico em sinal luminoso (piscadas curtas e longas).</li>
+                            <li><b>Buzzer (Campainha):</b> Converte a corrente elétrica em ondas sonoras (bipes curtos e longos).</li>
+                        </ul>
 
-    <script src="script.js"></script>
-</body>
-</html>
+                        <h3>Exemplo de mensagem traduzida</h3>
+                        <div class="morse-example-box">
+                            <span>Mensagem escrita: <b>AJUDA</b></span><br>
+                            <span>Código Morse: <code>• —</code> (A) &nbsp; <code>• — — —</code> (J) &nbsp; <code>• • —</code> (U) &nbsp; <code>— • •</code> (D) &nbsp; <code>• —</code> (A)</span>
+                        </div>
+
+                        <h3>Situação concreta de uso</h3>
+                        <p>Uma pessoa com mobilidade severamente reduzida (como pacientes com ELA ou tetraplegia) que consegue mover apenas um dedo, o queixo ou piscar pode acionar um único botão adaptado para emitir pedidos de socorro ou respostas básicas (<i>SIM / NÃO</i>) por luz e som.</p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <b>✅ Vantagens:</b> Exige apenas um comando simples (ligar/desligar) e pode combinar sinal visual (LED) e sonoro (buzzer).
+                            </div>
+                            <div class="cons">
+                                <b>⚠️ Limitações:</b> Exige que o remetente e o receptor conheçam ou decodifiquem o código; o som do buzzer não é percebido por pessoas surdas; a luz do LED pode não ser vista em ambientes muito claros ou por pessoas cegas; requer adaptação física do botão para cada usuário.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIMULADOR INTERATIVO DE MORSE (LED + BUZZER) -->
+                    <div class="interactive-panel">
+                        <h4>🔦 Simulador: Circuito LED + Buzzer em Morse</h4>
+                        <p class="panel-hint">Acione uma mensagem para observar os pulsos luminosos e sonoros:</p>
+
+                        <div class="led-stage">
+                            <div id="led-lamp" class="led-off"></div>
+                            <span id="led-status">Circuito em Espera</span>
+                        </div>
+
+                        <label class="sound-toggle">
+                            <input type="checkbox" id="buzzer-enabled" checked>
+                            🔊 Ativar som do Buzzer durante a transmissão
+                        </label>
+
+                        <div class="btn-group">
+                            <button class="chip-btn" onclick="iniciarTransmissao('AJUDA')">🚨 AJUDA</button>
+                            <button class="chip-btn" onclick="iniciarTransmissao('SOS')">🆘 SOS</button>
+                            <button class="chip-btn" onclick="iniciarTransmissao('SIM')">✅ SIM</button>
+                            <button class="chip-btn" onclick="iniciarTransmissao('NAO')">❌ NÃO</button>
+                        </div>
+
+                        <div class="sim-controls">
+                            <input type="text" id="morse-input" maxlength="18" placeholder="Digite uma palavra (ex: AGUA)..." />
+                            <button class="action-btn" onclick="transmitirInput()">Transmitir</button>
+                            <button class="stop-btn" onclick="pararTransmissao()">Parar</button>
+                        </div>
+
+                        <div class="morse-display">
+                            <small>Sinais gerados (curtos e longos):</small>
+                            <div id="morse-output">• — &nbsp; • — — — &nbsp; • • —</div>
+                        </div>
+
+                        <div class="media-placeholder">
+                            <strong>📸 Espaço para Imagem / Captura de Tela (Tinkercad)</strong>
+                            <p>[Inserir aqui o print do circuito com LED, Buzzer e Botão no Tinkercad]</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PARTE D: DISPLAY -->
+            <article id="parte-d" class="doc-section">
+                <span class="part-badge">Parte D • Recurso 3</span>
+                <h2>📟 Display (Visor LCD / OLED)</h2>
+
+                <div class="two-col-layout">
+                    <div>
+                        <h3>Como funciona?</h3>
+                        <p>Um display (como o LCD 16x2 ou visor OLED) é uma tela eletrônica controlada por um microcontrolador capaz de exibir <b>letras, números, palavras curtas e dados de sensores</b> de forma direta, sem que o usuário precise decodificar sinais.</p>
+
+                        <h3>Como informa, orienta ou alerta</h3>
+                        <p>Em ambientes de atendimento ao público, hospitais ou escolas, o display exibe instruções claras, senhas de chamada, alertas de segurança ou frases selecionadas pelo usuário para se comunicar com atendentes.</p>
+
+                        <h3>Por que o texto escrito sozinho não basta?</h3>
+                        <p>Embora a mensagem escrita facilite muito a compreensão para quem sabe ler, <b>ela não garante acessibilidade universal sozinha</b>: pessoas cegas ou com baixa visão não conseguem ler telas comuns; pessoas não alfabetizadas ou crianças pequenas não compreendem o texto; e estrangeiros podem não entender o idioma exibido.</p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <b>✅ Vantagens:</b> Comunicação direta em linguagem escrita, sem ambiguidade de símbolos e ideal para dados detalhados.
+                            </div>
+                            <div class="cons">
+                                <b>⚠️ Limitações:</b> Tamanho reduzido da tela (ex: apenas 2 linhas de 16 caracteres no LCD comum); problemas de contraste e reflexo; barreira de idioma; inacessível para pessoas cegas sem apoio sonoro ou tátil.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIMULAÇÃO VISUAL DE DISPLAY LCD 16x2 -->
+                    <div class="interactive-panel">
+                        <h4>Prévia Interativa: Display LCD 16x2</h4>
+                        <p class="panel-hint">Alterne exemplos de mensagens de acessibilidade e orientação:</p>
+
+                        <div class="lcd-screen" role="region" aria-label="Tela LCD simulada">
+                            <div id="
