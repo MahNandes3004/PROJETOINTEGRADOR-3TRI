@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Integrador • Programação, IA e Robótica Inclusiva</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <!-- CABEÇALHO E NAVEGAÇÃO PRINCIPAL -->
     <header class="navbar">
         <div class="logo">🚀 Projeto Integrador • Tecnologia & Acessibilidade</div>
         <nav class="nav-tabs">
-            <button class="tab-btn active" onclick="openTab(this, 'tab-programacao')">💻 Programação & IA</button>
-            <button class="tab-btn" onclick="openTab(this, 'tab-robotica')">🤖 Robótica & Acessibilidade</button>
+            <button type="button" class="tab-btn active" data-tab="tab-programacao">💻 Programação & IA</button>
+            <button type="button" class="tab-btn" data-tab="tab-robotica">🤖 Robótica & Acessibilidade</button>
         </nav>
     </header>
 
@@ -24,7 +23,6 @@
         <!-- ================================================================= -->
         <section id="tab-programacao" class="tab-content active">
             
-            <!-- CARROSSEL DE SLIDES -->
             <div class="carousel-container">
                 <div class="carousel-slides">
                     <div class="slide active">
@@ -44,17 +42,16 @@
                     </div>
                 </div>
 
-                <button class="carousel-btn prev" onclick="moveSlide(-1)" aria-label="Slide anterior">&#10094;</button>
-                <button class="carousel-btn next" onclick="moveSlide(1)" aria-label="Próximo slide">&#10095;</button>
+                <button type="button" class="carousel-btn prev" data-slide-dir="-1" aria-label="Slide anterior">&#10094;</button>
+                <button type="button" class="carousel-btn next" data-slide-dir="1" aria-label="Próximo slide">&#10095;</button>
 
                 <div class="carousel-dots">
-                    <span class="dot active" onclick="setSlide(0)"></span>
-                    <span class="dot" onclick="setSlide(1)"></span>
-                    <span class="dot" onclick="setSlide(2)"></span>
+                    <span class="dot active" data-slide-to="0"></span>
+                    <span class="dot" data-slide-to="1"></span>
+                    <span class="dot" data-slide-to="2"></span>
                 </div>
             </div>
 
-            <!-- DETALHAMENTO DOS 3 PROJETOS -->
             <h2 class="section-title">Os Três Projetos Desenvolvidos em Python</h2>
             
             <div class="cards-grid">
@@ -85,11 +82,10 @@
         </section>
 
         <!-- ================================================================= -->
-        <!-- ABA 2: ROBÓTICA & ACESSIBILIDADE (PARTES A ATÉ J DO PDF)          -->
+        <!-- ABA 2: ROBÓTICA & ACESSIBILIDADE (PARTES A ATÉ J)                 -->
         <!-- ================================================================= -->
         <section id="tab-robotica" class="tab-content">
 
-            <!-- MENU RÁPIDO DAS SEÇÕES DO TRABALHO -->
             <nav class="sub-nav" aria-label="Navegação das partes do projeto">
                 <a href="#parte-a">A. Apresentação</a>
                 <a href="#parte-b">B. Matriz de LEDs</a>
@@ -104,7 +100,7 @@
             </nav>
 
             <!-- PARTE A: APRESENTAÇÃO DO TEMA -->
-            <article id="parte-a" class="doc-section hero-box">
+            <article id="parte-a" class="doc-section">
                 <span class="part-badge">Parte A • Apresentação do Tema</span>
                 <h1>Tecnologia que Conecta: Comunicação, Autonomia e Inclusão</h1>
                 <p class="group-meta"><b>Integrantes do Grupo:</b> [Preencher com os nomes dos integrantes da equipe]</p>
@@ -113,10 +109,10 @@
                     <strong>🎯 Questão Motriz:</strong> “Como a ciência, a tecnologia e as ferramentas de Inteligência Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?”
                 </div>
 
-                <div class="cards-grid three-cols">
+                <div class="cards-grid">
                     <div class="mini-card">
                         <h3>♿ Acessibilidade</h3>
-                        <p>É garantir que qualquer pessoa, com ou sem deficiência, consiga usar espaços, objetos e informações com segurança e autonomia, sem depender o tempo todo de terceiros.</p>
+                        <p>É garantir que qualquer pessoa, com ou sem deficiência, consiga usar espaços, equipamentos e informações com segurança e autonomia, sem depender o tempo todo de terceiros.</p>
                     </div>
                     <div class="mini-card">
                         <h3>💬 Comunicação</h3>
@@ -165,19 +161,18 @@
                         </div>
                     </div>
 
-                    <!-- SIMULADOR VISUAL DE MATRIZ 5x5 + ESPAÇO PARA PRINT -->
                     <div class="interactive-panel">
                         <h4>Prévia Interativa: Matriz de LEDs (5x5)</h4>
                         <p class="panel-hint">Clique nos ícones para ver como os LEDs acendem de forma organizada:</p>
                         
                         <div id="led-matrix-grid" class="matrix-grid" aria-label="Matriz de LEDs simulada"></div>
-                        <div id="matrix-label" class="matrix-caption">Símbolo: Alegria / Tudo Bem</div>
+                        <div id="matrix-label" class="matrix-caption">Símbolo: Alegria / Bem-estar</div>
 
                         <div class="btn-group">
-                            <button class="chip-btn" onclick="renderMatrix('feliz')">😊 Alegria</button>
-                            <button class="chip-btn" onclick="renderMatrix('alerta')">⚠️ Atenção</button>
-                            <button class="chip-btn" onclick="renderMatrix('ajuda')">➕ Ajuda</button>
-                            <button class="chip-btn" onclick="renderMatrix('seta')">➡️ Direção</button>
+                            <button type="button" class="chip-btn" data-matrix="feliz">😊 Alegria</button>
+                            <button type="button" class="chip-btn" data-matrix="alerta">⚠️ Atenção</button>
+                            <button type="button" class="chip-btn" data-matrix="ajuda">➕ Ajuda</button>
+                            <button type="button" class="chip-btn" data-matrix="seta">➡️ Direção</button>
                         </div>
 
                         <div class="media-placeholder">
@@ -225,7 +220,6 @@
                         </div>
                     </div>
 
-                    <!-- SIMULADOR INTERATIVO DE MORSE (LED + BUZZER) -->
                     <div class="interactive-panel">
                         <h4>🔦 Simulador: Circuito LED + Buzzer em Morse</h4>
                         <p class="panel-hint">Acione uma mensagem para observar os pulsos luminosos e sonoros:</p>
@@ -241,16 +235,16 @@
                         </label>
 
                         <div class="btn-group">
-                            <button class="chip-btn" onclick="iniciarTransmissao('AJUDA')">🚨 AJUDA</button>
-                            <button class="chip-btn" onclick="iniciarTransmissao('SOS')">🆘 SOS</button>
-                            <button class="chip-btn" onclick="iniciarTransmissao('SIM')">✅ SIM</button>
-                            <button class="chip-btn" onclick="iniciarTransmissao('NAO')">❌ NÃO</button>
+                            <button type="button" class="chip-btn" data-morse="AJUDA">🚨 AJUDA</button>
+                            <button type="button" class="chip-btn" data-morse="SOS">🆘 SOS</button>
+                            <button type="button" class="chip-btn" data-morse="SIM">✅ SIM</button>
+                            <button type="button" class="chip-btn" data-morse="NAO">❌ NÃO</button>
                         </div>
 
                         <div class="sim-controls">
                             <input type="text" id="morse-input" maxlength="18" placeholder="Digite uma palavra (ex: AGUA)..." />
-                            <button class="action-btn" onclick="transmitirInput()">Transmitir</button>
-                            <button class="stop-btn" onclick="pararTransmissao()">Parar</button>
+                            <button type="button" id="btn-transmit" class="action-btn">Transmitir</button>
+                            <button type="button" id="btn-stop" class="stop-btn">Parar</button>
                         </div>
 
                         <div class="morse-display">
@@ -292,10 +286,15 @@
                         </div>
                     </div>
 
-                    <!-- SIMULAÇÃO VISUAL DE DISPLAY LCD 16x2 -->
                     <div class="interactive-panel">
                         <h4>Prévia Interativa: Display LCD 16x2</h4>
                         <p class="panel-hint">Alterne exemplos de mensagens de acessibilidade e orientação:</p>
 
                         <div class="lcd-screen" role="region" aria-label="Tela LCD simulada">
-                            <div id="
+                            <div id="lcd-line-1">ATENDIMENTO     </div>
+                            <div id="lcd-line-2">PRIORITARIO -> 2</div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="chip-btn" data-lcd1="ATENDIMENTO" data-lcd2="PRIORITARIO -> 2">🏥 Orientação</button>
+                            <button type="button" class="chip-btn" data-lcd1="PRECISO DE AJUDA" da
