@@ -1,7 +1,7 @@
- document.addEventListener("DOMContentLoaded", function () {
-    // ==========================================
+window.siteIniciado = true;
+
+function iniciarSite() {
     // 1. NAVEGAÇÃO ENTRE ABAS PRINCIPAIS
-    // ==========================================
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
 
@@ -24,9 +24,7 @@
         });
     });
 
-    // ==========================================
-    // 2. CARROSSEL / SLIDES (ABA PROGRAMAÇÃO)
-    // ==========================================
+    // 2. CARROSSEL / SLIDES
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
@@ -78,49 +76,23 @@
     showSlide(0);
     resetSlideTimer();
 
-    // ==========================================
-    // 3. MATRIZ DE LEDS 5x5 INTERATIVA (PARTE B)
-    // ==========================================
+    // 3. MATRIZ DE LEDS 5x5 INTERATIVA
     const MATRIX_PATTERNS = {
         feliz: {
             label: "Símbolo: Alegria / Bem-estar",
-            grid: [
-                0, 1, 0, 1, 0,
-                0, 1, 0, 1, 0,
-                0, 0, 0, 0, 0,
-                1, 0, 0, 0, 1,
-                0, 1, 1, 1, 0
-            ]
+            grid: [0,1,0,1,0, 0,1,0,1,0, 0,0,0,0,0, 1,0,0,0,1, 0,1,1,1,0]
         },
         alerta: {
             label: "Símbolo: Atenção / Aviso (!)",
-            grid: [
-                0, 0, 1, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 0, 0,
-                0, 0, 1, 0, 0
-            ]
+            grid: [0,0,1,0,0, 0,0,1,0,0, 0,0,1,0,0, 0,0,0,0,0, 0,0,1,0,0]
         },
         ajuda: {
             label: "Símbolo: Socorro / Atendimento (+)",
-            grid: [
-                0, 0, 1, 0, 0,
-                0, 0, 1, 0, 0,
-                1, 1, 1, 1, 1,
-                0, 0, 1, 0, 0,
-                0, 0, 1, 0, 0
-            ]
+            grid: [0,0,1,0,0, 0,0,1,0,0, 1,1,1,1,1, 0,0,1,0,0, 0,0,1,0,0]
         },
         seta: {
             label: "Símbolo: Direção / Saída Acessível",
-            grid: [
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0,
-                1, 1, 1, 1, 1,
-                0, 0, 0, 1, 0,
-                0, 0, 1, 0, 0
-            ]
+            grid: [0,0,1,0,0, 0,0,0,1,0, 1,1,1,1,1, 0,0,0,1,0, 0,0,1,0,0]
         }
     };
 
@@ -149,9 +121,7 @@
 
     renderMatrix("feliz");
 
-    // ==========================================
-    // 4. SIMULADOR DE MORSE: LED + BUZZER (PARTE C)
-    // ==========================================
+    // 4. SIMULADOR DE MORSE: LED + BUZZER
     const DICIONARIO_MORSE = {
         "A": ".-",   "B": "-...", "C": "-.-.", "D": "-..",  "E": ".",
         "F": "..-.", "G": "--.",  "H": "....", "I": "..",   "J": ".---",
@@ -174,12 +144,8 @@
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
             if (!AudioContextClass) return;
 
-            if (!audioCtx) {
-                audioCtx = new AudioContextClass();
-            }
-            if (audioCtx.state === "suspended") {
-                audioCtx.resume();
-            }
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === "suspended") audioCtx.resume();
 
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
@@ -192,28 +158,16 @@
 
             osc.start();
             osc.stop(audioCtx.currentTime + duracaoMs / 1000);
-        } catch (err) {
-            // Continua o LED caso o navegador bloqueie áudio
-        }
+        } catch (err) {}
     }
 
     function esperar(ms) {
-        return new Promise(function (resolve) {
-            setTimeout(resolve, ms);
-        });
+        return new Promise(function (resolve) { setTimeout(resolve, ms); });
     }
 
     function converterParaMorse(texto) {
-        const limpo = texto
-            .toUpperCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        return limpo
-            .split("")
-            .map(function (char) { return DICIONARIO_MORSE[char] || ""; })
-            .filter(function (code) { return code !== ""; })
-            .join(" ");
+        const limpo = texto.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return limpo.split("").map(function (c) { return DICIONARIO_MORSE[c] || ""; }).filter(Boolean).join(" ");
     }
 
     function pararTransmissao() {
@@ -242,13 +196,10 @@
             return;
         }
 
-        if (outputEl) {
-            outputEl.textContent = codigoMorse.replace(/\./g, "•").replace(/-/g, "—");
-        }
+        if (outputEl) outputEl.textContent = codigoMorse.replace(/\./g, "•").replace(/-/g, "—");
 
         for (let i = 0; i < codigoMorse.length; i++) {
             if (myId !== currentTransmissionId) return;
-
             const simbolo = codigoMorse[i];
 
             if (simbolo === ".") {
@@ -304,9 +255,7 @@
         btnStop.addEventListener("click", pararTransmissao);
     }
 
-    // ==========================================
-    // 5. DISPLAY LCD 16x2 SIMULADO (PARTE D)
-    // ==========================================
+    // 5. DISPLAY LCD 16x2 SIMULADO
     document.querySelectorAll("[data-lcd1]").forEach(function (btn) {
         btn.addEventListener("click", function () {
             const line1 = btn.getAttribute("data-lcd1") || "";
@@ -317,4 +266,10 @@
             if (l2) l2.textContent = line2.padEnd(16, " ").slice(0, 16);
         });
     });
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciarSite);
+} else {
+    iniciarSite();
+}
