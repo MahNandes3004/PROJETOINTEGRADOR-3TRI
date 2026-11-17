@@ -4,15 +4,708 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Integrador • Programação, IA e Robótica Inclusiva</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-panel: #0b1120;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.65;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* CABEÇALHO E ABAS PRINCIPAIS */
+        .navbar {
+            background-color: var(--bg-card);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            touch-action: manipulation;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
+
+        .tab-btn.active {
+            color: var(--bg-main);
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* CONTAINER E CONTEÚDO DAS ABAS */
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 24px auto;
+            padding: 0 18px;
+            flex: 1;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* CARROSSEL / SLIDES */
+        .carousel-container {
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 56px;
+            margin-bottom: 34px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-badge, .part-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .slide h2 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.45rem;
+        }
+
+        .slide p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--text-primary);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
+            border: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            touch-action: manipulation;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent);
+            color: var(--bg-main);
+        }
+
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 6px;
+            background-color: var(--border-color);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.3s;
+            touch-action: manipulation;
+        }
+
+        .dot.active {
+            background-color: var(--accent);
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        /* CARDS E GRIDS */
+        .section-title {
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 1.35rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 18px;
+            margin-top: 16px;
+        }
+
+        .card, .mini-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .mini-card {
+            background: var(--bg-panel);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .card h3, .mini-card h3, .mini-card h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .card p, .mini-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .card p b, .mini-card p b {
+            color: var(--text-primary);
+        }
+
+        /* SUB-NAVEGAÇÃO DA ABA ROBÓTICA */
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .sub-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: var(--bg-panel);
+            border: 1px solid transparent;
+        }
+
+        .sub-nav a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* SEÇÕES DO DOCUMENTO (PARTES A ATÉ J) */
+        .doc-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            scroll-margin-top: 80px;
+        }
+
+        .doc-section h1 {
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .doc-section h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .doc-section h3 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin: 16px 0 8px 0;
+        }
+
+        .doc-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .doc-section p b {
+            color: var(--text-primary);
+        }
+
+        .group-meta {
+            background: var(--bg-panel);
+            padding: 8px 14px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .motriz-banner {
+            background: rgba(56, 189, 248, 0.12);
+            border-left: 4px solid var(--accent);
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 14px 0 18px 0;
+            color: var(--text-primary);
+            font-size: 0.96rem;
+        }
+
+        .info-callout, .scenario-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 14px;
+        }
+
+        .info-callout h4 {
+            color: #fbbf24;
+            margin-bottom: 8px;
+        }
+
+        .clean-list {
+            margin-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            margin-bottom: 12px;
+        }
+
+        .clean-list li {
+            margin-bottom: 6px;
+        }
+
+        .clean-list b {
+            color: var(--text-primary);
+        }
+
+        .clean-list a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        code {
+            background: var(--bg-panel);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .two-col-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .two-col-layout {
+                grid-template-columns: 1fr;
+            }
+            .carousel-container {
+                padding: 36px 48px;
+            }
+            .carousel-btn.prev { left: 6px; }
+            .carousel-btn.next { right: 6px; }
+        }
+
+        .pros-cons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 14px;
+            font-size: 0.9rem;
+        }
+
+        .pros {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 10px 12px;
+            border-radius: 4px;
+            color: #cbd5e1;
+        }
+
+        .cons {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid #f59e0b;
+            padding: 10px 12px;
+            border-radius: 4px;
+            color: #cbd5e1;
+        }
+
+        /* PAINÉIS INTERATIVOS */
+        .interactive-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .interactive-panel h4 {
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .panel-hint {
+            font-size: 0.85rem !important;
+            margin-bottom: 14px !important;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0;
+        }
+
+        .chip-btn {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            touch-action: manipulation;
+        }
+
+        .chip-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .media-placeholder {
+            margin-top: 16px;
+            border: 2px dashed #475569;
+            border-radius: 8px;
+            padding: 16px;
+            background: rgba(30, 41, 59, 0.4);
+        }
+
+        .media-placeholder strong {
+            display: block;
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .media-placeholder p {
+            font-size: 0.82rem !important;
+            margin: 0 !important;
+        }
+
+        /* MATRIZ DE LEDS */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 24px);
+            gap: 6px;
+            justify-content: center;
+            background: #050811;
+            padding: 14px;
+            border-radius: 8px;
+            border: 2px solid #334155;
+            width: fit-content;
+            margin: 0 auto 10px auto;
+        }
+
+        .matrix-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #1e293b;
+        }
+
+        .matrix-dot.on {
+            background: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        .matrix-caption {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* SIMULADOR DE MORSE */
+        .morse-example-box {
+            background: var(--bg-panel);
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin: 10px 0 14px 0;
+            font-size: 0.9rem;
+        }
+
+        .led-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin: 14px 0;
+        }
+
+        .led-off {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #14532d;
+            border: 4px solid #334155;
+        }
+
+        .led-on {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #4ade80;
+            border: 4px solid #bbf7d0;
+            box-shadow: 0 0 25px #22c55e, 0 0 45px #22c55e;
+        }
+
+        #led-status {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .sound-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.84rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+
+        .sim-controls {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 14px 0;
+        }
+
+        .sim-controls input {
+            padding: 9px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            width: 190px;
+            font-size: 0.9rem;
+        }
+
+        .action-btn {
+            background: var(--accent);
+            color: var(--bg-main);
+            border: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .stop-btn {
+            background: #ef4444;
+            color: #fff;
+            border: none;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .morse-display {
+            background: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .morse-display small {
+            color: var(--text-muted);
+            display: block;
+            font-size: 0.78rem;
+        }
+
+        #morse-output {
+            font-family: monospace;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            word-break: break-word;
+        }
+
+        /* DISPLAY LCD */
+        .lcd-screen {
+            background-color: #1d4ed8;
+            border: 6px solid #334155;
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #eff6ff;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+            width: fit-content;
+            margin: 12px auto;
+            text-align: left;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* TABELAS */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 14px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .data-table th {
+            background: #0f172a;
+            color: var(--accent);
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+
+        .data-table td b {
+            color: var(--text-primary);
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 4px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .note-tag {
+            color: #fbbf24 !important;
+            font-size: 0.88rem !important;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
 
     <header class="navbar">
         <div class="logo">🚀 Projeto Integrador • Tecnologia & Acessibilidade</div>
         <nav class="nav-tabs">
-            <button type="button" class="tab-btn active" data-tab="tab-programacao">💻 Programação & IA</button>
-            <button type="button" class="tab-btn" data-tab="tab-robotica">🤖 Robótica & Acessibilidade</button>
+            <button type="button" class="tab-btn active" onclick="abrirAba('tab-programacao', this)">💻 Programação & IA</button>
+            <button type="button" class="tab-btn" onclick="abrirAba('tab-robotica', this)">🤖 Robótica & Acessibilidade</button>
         </nav>
     </header>
 
@@ -21,281 +714,20 @@
         <!-- ================================================================= -->
         <!-- ABA 1: PROGRAMAÇÃO & IA (SLIDES + 3 PROJETOS EM PYTHON)           -->
         <!-- ================================================================= -->
-        <section id="tab-programacao" class="tab-content active">
+        <section id="tab-programacao" class="tab-content active" style="display: block;">
             
             <div class="carousel-container">
                 <div class="carousel-slides">
-                    <div class="slide active">
+                    <div class="slide active" style="display: block;">
                         <div class="slide-badge">Projeto 01 • Segurança Digital</div>
                         <h2>🔐 Cofre Digital Interativo em Python</h2>
                         <p>Algoritmo de criptografia e codificação Base64 desenvolvido para proteger senhas, contatos de emergência e dados pessoais de familiares contra golpes digitais.</p>
                     </div>
-                    <div class="slide">
+                    <div class="slide" style="display: none;">
                         <div class="slide-badge">Projeto 02 • Inteligência Artificial</div>
                         <h2>🧠 Engenharia de Prompt & Leitura Facilitada</h2>
                         <p>Uso estratégico de Modelos de Linguagem (LLMs) para traduzir textos médicos e técnicos complexos em linguagem simples, garantindo autonomia cognitiva.</p>
                     </div>
-                    <div class="slide">
+                    <div class="slide" style="display: none;">
                         <div class="slide-badge">Projeto 03 • Ciência de Dados</div>
-                        <h2>🥗 Modelo Computacional Nutricional</h2>
-                        <p>Sistema automatizado em Python que calcula calorias, macronutrientes, fibras e sódio, emitindo alertas preventivos para idosos, diabéticos e hipertensos.</p>
-                    </div>
-                </div>
-
-                <button type="button" class="carousel-btn prev" data-slide-dir="-1" aria-label="Slide anterior">&#10094;</button>
-                <button type="button" class="carousel-btn next" data-slide-dir="1" aria-label="Próximo slide">&#10095;</button>
-
-                <div class="carousel-dots">
-                    <span class="dot active" data-slide-to="0"></span>
-                    <span class="dot" data-slide-to="1"></span>
-                    <span class="dot" data-slide-to="2"></span>
-                </div>
-            </div>
-
-            <h2 class="section-title">Os Três Projetos Desenvolvidos em Python</h2>
-            
-            <div class="cards-grid">
-                <article class="card">
-                    <div class="card-icon">🔐</div>
-                    <h3>1. Cofre Digital Interativo</h3>
-                    <p><b>O que faz:</b> Criptografa e descriptografa mensagens e senhas através de uma chave secreta definida pelo usuário.</p>
-                    <p><b>Motivo:</b> Ajudar pessoas com pouca familiaridade tecnológica a guardar informações confidenciais com segurança no dia a dia.</p>
-                    <p><b>Base técnica:</b> Manipulação de bytes UTF-8, aritmética modular e conversão em Base64.</p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">🤖</div>
-                    <h3>2. IA e Leitura Facilitada</h3>
-                    <p><b>O que faz:</b> Estrutura instruções avançadas (prompts) para que a IA adapte textos difíceis para uma leitura direta, curta e visual.</p>
-                    <p><b>Motivo:</b> Eliminar barreiras de compreensão em bulas de remédios e contratos para idosos, pessoas com dislexia ou baixo letramento.</p>
-                    <p><b>Base técnica:</b> Engenharia de Prompt com definição de persona, regras de tamanho de frase e formatação inclusiva.</p>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">🥗</div>
-                    <h3>3. Análise Nutricional Automatizada</h3>
-                    <p><b>O que faz:</b> Calcula proporcionalmente os nutrientes de uma refeição com base no peso (gramas) de cada alimento inserido.</p>
-                    <p><b>Motivo:</b> Democratizar o acompanhamento alimentar para pessoas com restrições clínicas, como hipertensão e diabetes.</p>
-                    <p><b>Base técnica:</b> Dicionários aninhados em Python, cálculo proporcional e sistema de alertas preventivos.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- ================================================================= -->
-        <!-- ABA 2: ROBÓTICA & ACESSIBILIDADE (PARTES A ATÉ J)                 -->
-        <!-- ================================================================= -->
-        <section id="tab-robotica" class="tab-content">
-
-            <nav class="sub-nav" aria-label="Navegação das partes do projeto">
-                <a href="#parte-a">A. Apresentação</a>
-                <a href="#parte-b">B. Matriz de LEDs</a>
-                <a href="#parte-c">C. Código Morse</a>
-                <a href="#parte-d">D. Display</a>
-                <a href="#parte-e">E. Comparação</a>
-                <a href="#parte-f">F. Qualidade de Vida</a>
-                <a href="#parte-g">G. Uso de IA</a>
-                <a href="#parte-h">H. Melhoria</a>
-                <a href="#parte-i">I. Conclusão</a>
-                <a href="#parte-j">J. Fontes</a>
-            </nav>
-
-            <!-- PARTE A -->
-            <article id="parte-a" class="doc-section">
-                <span class="part-badge">Parte A • Apresentação do Tema</span>
-                <h1>Tecnologia que Conecta: Comunicação, Autonomia e Inclusão</h1>
-                <p class="group-meta"><b>Integrantes do Grupo:</b> [Preencher com os nomes dos integrantes da equipe]</p>
-                
-                <div class="motriz-banner">
-                    <strong>🎯 Questão Motriz:</strong> “Como a ciência, a tecnologia e as ferramentas de Inteligência Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?”
-                </div>
-
-                <div class="cards-grid">
-                    <div class="mini-card">
-                        <h3>♿ Acessibilidade</h3>
-                        <p>É garantir que qualquer pessoa, com ou sem deficiência, consiga usar espaços, equipamentos e informações com segurança e autonomia, sem depender o tempo todo de terceiros.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>💬 Comunicação</h3>
-                        <p>É o processo de expressar ideias, necessidades e sentimentos e compreender o que os outros transmitem, seja por fala, escrita, gestos, sons ou sinais visuais.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>🌱 Qualidade de Vida</h3>
-                        <p>Significa ter bem-estar físico, emocional e social, dignidade para tomar decisões próprias e participação ativa na escola, na família e na sociedade.</p>
-                    </div>
-                </div>
-
-                <div class="info-callout">
-                    <h4>🚧 Situação Concreta de Barreira na Comunicação</h4>
-                    <p>Imagine um paciente internado em um hospital ou um estudante com paralisia motora severa (ou afasia após um AVC) que não consegue falar nem escrever com caneta. Em um corredor movimentado ou quarto compartilhado, essa pessoa pode sentir dor, sede ou falta de ar e não conseguir avisar quem está por perto.</p>
-                    <p><b>O que vamos investigar:</b> Nosso grupo investigará como três recursos da Robótica — <b>Matriz de LEDs, Código Morse e Display</b> — funcionam na prática e como podem reduzir barreiras de comunicação para promover mais autonomia e qualidade de vida.</p>
-                </div>
-            </article>
-
-            <!-- PARTE B -->
-            <article id="parte-b" class="doc-section">
-                <span class="part-badge">Parte B • Recurso 1</span>
-                <h2>🔲 Matriz de LEDs</h2>
-
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona?</h3>
-                        <p>Uma matriz de LEDs é uma placa formada por vários diodos emissores de luz organizados em <b>linhas e colunas</b> (como uma grade, por exemplo, 8x8). Ao enviar corrente elétrica para coordenadas específicas de linha e coluna (técnica chamada de <i>multiplexação</i>), o microcontrolador acende apenas os pontos desejados muito rapidamente, formando desenhos, setas, letras ou símbolos luminosos.</p>
-
-                        <h3>Símbolos que comunicam</h3>
-                        <ul class="clean-list">
-                            <li><b>Emoções:</b> Rosto sorridente (bem-estar/alegria) ou rosto triste (desconforto/dor).</li>
-                            <li><b>Necessidades e Avisos:</b> Ponto de exclamação <code>!</code> (atenção), cruz ou <code>SOS</code> (pedido de ajuda urgente), gota (sede).</li>
-                            <li><b>Direção:</b> Setas apontando para saída de emergência, rampa acessível ou sala de atendimento.</li>
-                        </ul>
-
-                        <h3>Situação concreta de uso</h3>
-                        <p>Em uma escola ou unidade de saúde barulhenta, uma matriz de LEDs instalada na mesa de um aluno não verbal ou na parede de um corredor permite mostrar um ícone de <b>“Ajuda”</b> ou uma <b>seta direcional</b>, facilitando o entendimento imediato mesmo para pessoas surdas ou que ainda não sabem ler.</p>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <b>✅ Vantagens:</b> Alta luminosidade, resposta instantânea e comunicação visual universal por ícones simples.
-                            </div>
-                            <div class="cons">
-                                <b>⚠️ Limitações:</b> Baixa resolução para textos longos; perda de visibilidade sob luz solar forte ou grandes distâncias; exige que o observador compreenda o significado do símbolo exibido.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-panel">
-                        <h4>Prévia Interativa: Matriz de LEDs (5x5)</h4>
-                        <p class="panel-hint">Clique nos ícones para ver como os LEDs acendem de forma organizada:</p>
-                        
-                        <div id="led-matrix-grid" class="matrix-grid" aria-label="Matriz de LEDs simulada"></div>
-                        <div id="matrix-label" class="matrix-caption">Símbolo: Alegria / Bem-estar</div>
-
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" data-matrix="feliz">😊 Alegria</button>
-                            <button type="button" class="chip-btn" data-matrix="alerta">⚠️ Atenção</button>
-                            <button type="button" class="chip-btn" data-matrix="ajuda">➕ Ajuda</button>
-                            <button type="button" class="chip-btn" data-matrix="seta">➡️ Direção</button>
-                        </div>
-
-                        <div class="media-placeholder">
-                            <strong>📸 Espaço para Imagem / Captura de Tela (Tinkercad)</strong>
-                            <p>[Inserir aqui o print do circuito da Matriz de LEDs no Tinkercad e explicar qual ícone ela está comunicando]</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- PARTE C -->
-            <article id="parte-c" class="doc-section">
-                <span class="part-badge">Parte C • Recurso 2</span>
-                <h2>⚡ Código Morse</h2>
-
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona?</h3>
-                        <p>O Código Morse é um sistema de representação de letras, números e pontuações por meio de combinações de <b>sinais curtos (pontos <code>•</code>)</b> e <b>sinais longos (traços <code>—</code>)</b>, separados por pequenas pausas.</p>
-
-                        <h3>Circuito com Botão, LED e Buzzer</h3>
-                        <p>Em um projeto de Robótica (como no Arduino/Tinkercad), o circuito combina três elementos principais:</p>
-                        <ul class="clean-list">
-                            <li><b>Botão (Pushbutton):</b> Funciona como entrada de dados. Um toque rápido envia um pulso curto (<code>•</code>) e um toque demorado envia um pulso longo (<code>—</code>).</li>
-                            <li><b>LED:</b> Converte o pulso elétrico em sinal luminoso (piscadas curtas e longas).</li>
-                            <li><b>Buzzer (Campainha):</b> Converte a corrente elétrica em ondas sonoras (bipes curtos e longos).</li>
-                        </ul>
-
-                        <h3>Exemplo de mensagem traduzida</h3>
-                        <div class="morse-example-box">
-                            <span>Mensagem escrita: <b>AJUDA</b></span><br>
-                            <span>Código Morse: <code>• —</code> (A) &nbsp; <code>• — — —</code> (J) &nbsp; <code>• • —</code> (U) &nbsp; <code>— • •</code> (D) &nbsp; <code>• —</code> (A)</span>
-                        </div>
-
-                        <h3>Situação concreta de uso</h3>
-                        <p>Uma pessoa com mobilidade severamente reduzida (como pacientes com ELA ou tetraplegia) que consegue mover apenas um dedo, o queixo ou piscar pode acionar um único botão adaptado para emitir pedidos de socorro ou respostas básicas (<i>SIM / NÃO</i>) por luz e som.</p>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <b>✅ Vantagens:</b> Exige apenas um comando simples (ligar/desligar) e pode combinar sinal visual (LED) e sonoro (buzzer).
-                            </div>
-                            <div class="cons">
-                                <b>⚠️ Limitações:</b> Exige que o remetente e o receptor conheçam ou decodifiquem o código; o som do buzzer não é percebido por pessoas surdas; a luz do LED pode não ser vista em ambientes muito claros ou por pessoas cegas; requer adaptação física do botão para cada usuário.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-panel">
-                        <h4>🔦 Simulador: Circuito LED + Buzzer em Morse</h4>
-                        <p class="panel-hint">Acione uma mensagem para observar os pulsos luminosos e sonoros:</p>
-
-                        <div class="led-stage">
-                            <div id="led-lamp" class="led-off"></div>
-                            <span id="led-status">Circuito em Espera</span>
-                        </div>
-
-                        <label class="sound-toggle">
-                            <input type="checkbox" id="buzzer-enabled" checked>
-                            🔊 Ativar som do Buzzer durante a transmissão
-                        </label>
-
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" data-morse="AJUDA">🚨 AJUDA</button>
-                            <button type="button" class="chip-btn" data-morse="SOS">🆘 SOS</button>
-                            <button type="button" class="chip-btn" data-morse="SIM">✅ SIM</button>
-                            <button type="button" class="chip-btn" data-morse="NAO">❌ NÃO</button>
-                        </div>
-
-                        <div class="sim-controls">
-                            <input type="text" id="morse-input" maxlength="18" placeholder="Digite uma palavra (ex: AGUA)..." />
-                            <button type="button" id="btn-transmit" class="action-btn">Transmitir</button>
-                            <button type="button" id="btn-stop" class="stop-btn">Parar</button>
-                        </div>
-
-                        <div class="morse-display">
-                            <small>Sinais gerados (curtos e longos):</small>
-                            <div id="morse-output">• — &nbsp; • — — — &nbsp; • • —</div>
-                        </div>
-
-                        <div class="media-placeholder">
-                            <strong>📸 Espaço para Imagem / Captura de Tela (Tinkercad)</strong>
-                            <p>[Inserir aqui o print do circuito com LED, Buzzer e Botão no Tinkercad]</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- PARTE D -->
-            <article id="parte-d" class="doc-section">
-                <span class="part-badge">Parte D • Recurso 3</span>
-                <h2>📟 Display (Visor LCD / OLED)</h2>
-
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona?</h3>
-                        <p>Um display (como o LCD 16x2 ou visor OLED) é uma tela eletrônica controlada por um microcontrolador capaz de exibir <b>letras, números, palavras curtas e dados de sensores</b> de forma direta, sem que o usuário precise decodificar sinais.</p>
-
-                        <h3>Como informa, orienta ou alerta</h3>
-                        <p>Em ambientes de atendimento ao público, hospitais ou escolas, o display exibe instruções claras, senhas de chamada, alertas de segurança ou frases selecionadas pelo usuário para se comunicar com atendentes.</p>
-
-                        <h3>Por que o texto escrito sozinho não basta?</h3>
-                        <p>Embora a mensagem escrita facilite muito a compreensão para quem sabe ler, <b>ela não garante acessibilidade universal sozinha</b>: pessoas cegas ou com baixa visão não conseguem ler telas comuns; pessoas não alfabetizadas ou crianças pequenas não compreendem o texto; e estrangeiros podem não entender o idioma exibido.</p>
-
-                        <div class="pros-cons">
-                            <div class="pros">
-                                <b>✅ Vantagens:</b> Comunicação direta em linguagem escrita, sem ambiguidade de símbolos e ideal para dados detalhados.
-                            </div>
-                            <div class="cons">
-                                <b>⚠️ Limitações:</b> Tamanho reduzido da tela (ex: apenas 2 linhas de 16 caracteres no LCD comum); problemas de contraste e reflexo; barreira de idioma; inacessível para pessoas cegas sem apoio sonoro ou tátil.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-panel">
-                        <h4>Prévia Interativa: Display LCD 16x2</h4>
-                        <p class="panel-hint">Alterne exemplos de mensagens de acessibilidade e orientação:</p>
-
-                        <div class="lcd-screen" role="region" aria-label="Tela LCD simulada">
-                            <div id="lcd-line-1">ATENDIMENTO     </div>
-                            <div id="lcd-line-2">PRIORITARIO -> 2</div>
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" data-lcd1="ATENDIMENTO" data-lcd2="PRIORITARIO -> 2">🏥 Orientação</button>
-                            <button type="button" class="chip-btn" data-lcd1="PRECISO DE AJUDA" data-lcd2="CHAMAR MONITOR">🙋 Pedido de Ajuda</button>
-          
+                      
