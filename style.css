@@ -1,5 +1,4 @@
-
- :root {
+:root {
     --bg-main: #0f172a;
     --bg-card: #1e293b;
     --bg-panel: #0b1120;
@@ -30,7 +29,7 @@ body {
     min-height: 100vh;
 }
 
-/* CABEÇALHO E ABAS */
+/* CABEÇALHO E ABAS PRINCIPAIS */
 .navbar {
     background-color: var(--bg-card);
     display: flex;
@@ -79,7 +78,7 @@ body {
     border-color: var(--accent);
 }
 
-/* CONTAINER E CONTEÚDO */
+/* CONTAINER E CONTEÚDO DAS ABAS */
 .container {
     max-width: 1100px;
     width: 100%;
@@ -102,7 +101,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* SLIDES */
+/* CARROSSEL / SLIDES (ABA PROGRAMAÇÃO) */
 .carousel-container {
     position: relative;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -148,6 +147,7 @@ body {
 .slide p {
     max-width: 720px;
     margin: 0 auto;
+    color: var(--text-primary);
 }
 
 .carousel-btn {
@@ -161,6 +161,7 @@ body {
     padding: 10px 14px;
     cursor: pointer;
     border-radius: 50%;
+    transition: 0.2s;
 }
 
 .carousel-btn:hover {
@@ -193,7 +194,7 @@ body {
     border-radius: 10px;
 }
 
-/* CARDS */
+/* CARDS E GRIDS */
 .section-title {
     margin-bottom: 20px;
     color: var(--accent);
@@ -238,7 +239,7 @@ body {
     color: var(--text-primary);
 }
 
-/* SUB-NAVEGAÇÃO ROBÓTICA */
+/* SUB-NAVEGAÇÃO DA ABA ROBÓTICA */
 .sub-nav {
     display: flex;
     flex-wrap: wrap;
@@ -267,7 +268,7 @@ body {
     border-color: var(--accent);
 }
 
-/* SEÇÕES */
+/* SEÇÕES DO DOCUMENTO (PARTES A ATÉ J) */
 .doc-section {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -323,12 +324,12 @@ body {
     font-size: 0.98rem;
 }
 
-.info-callout {
+.info-callout, .scenario-card {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 18px;
-    margin-top: 18px;
+    margin-top: 14px;
 }
 
 .info-callout h4 {
@@ -379,6 +380,11 @@ code {
     .two-col-layout {
         grid-template-columns: 1fr;
     }
+    .carousel-container {
+        padding: 35px 42px;
+    }
+    .carousel-btn.prev { left: 8px; }
+    .carousel-btn.next { right: 8px; }
 }
 
 .pros-cons {
@@ -405,7 +411,7 @@ code {
     color: #cbd5e1;
 }
 
-/* SIMULADORES */
+/* PAINÉIS INTERATIVOS E PLACEHOLDERS DO TINKERCAD */
 .interactive-panel {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
@@ -468,7 +474,7 @@ code {
     margin: 0 !important;
 }
 
-/* MATRIZ DE LEDS */
+/* MATRIZ DE LEDS SIMULADA (5x5) */
 .matrix-grid {
     display: grid;
     grid-template-columns: repeat(5, 24px);
@@ -501,7 +507,7 @@ code {
     font-weight: bold;
 }
 
-/* MORSE */
+/* SIMULADOR DE MORSE + LED + BUZZER */
 .morse-example-box {
     background: var(--bg-panel);
     padding: 10px 14px;
@@ -527,165 +533,4 @@ code {
     border: 4px solid #334155;
 }
 
-.led-on {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: #4ade80;
-    border: 4px solid #bbf7d0;
-    box-shadow: 0 0 25px #22c55e, 0 0 45px #22c55e;
-}
-
-#led-status {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    font-weight: 600;
-}
-
-.sound-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.84rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    margin-bottom: 6px;
-}
-
-.sim-controls {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 10px 0 14px 0;
-}
-
-.sim-controls input {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-card);
-    color: var(--text-primary);
-    width: 190px;
-    font-size: 0.9rem;
-}
-
-.action-btn {
-    background: var(--accent);
-    color: var(--bg-main);
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.stop-btn {
-    background: #ef4444;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.morse-display {
-    background: var(--bg-card);
-    border: 1px dashed var(--border-color);
-    padding: 10px;
-    border-radius: 6px;
-}
-
-.morse-display small {
-    color: var(--text-muted);
-    display: block;
-    font-size: 0.78rem;
-}
-
-#morse-output {
-    font-family: monospace;
-    font-size: 1.15rem;
-    letter-spacing: 2px;
-    color: var(--accent);
-    word-break: break-word;
-}
-
-/* DISPLAY LCD */
-.lcd-screen {
-    background-color: #1d4ed8;
-    border: 6px solid #334155;
-    border-radius: 6px;
-    padding: 14px 18px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.15rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #eff6ff;
-    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
-    width: fit-content;
-    margin: 12px auto;
-    text-align: left;
-    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
-}
-
-/* TABELAS */
-.table-wrapper {
-    overflow-x: auto;
-    margin-top: 14px;
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    background: var(--bg-panel);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.data-table th {
-    background: #0f172a;
-    color: var(--accent);
-    text-align: left;
-    padding: 12px 14px;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.data-table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-muted);
-    vertical-align: top;
-}
-
-.data-table td b {
-    color: var(--text-primary);
-}
-
-.tag {
-    display: inline-block;
-    margin-top: 4px;
-    background: rgba(56, 189, 248, 0.15);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.78rem;
-    font-weight: 600;
-}
-
-.note-tag {
-    color: #fbbf24 !important;
-    font-size: 0.88rem !important;
-    font-style: italic;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--bg-card);
-    border-top: 1px solid var(--border-color);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-top: auto;
-}
+.led-
