@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
     // 1. NAVEGAÇÃO ENTRE ABAS PRINCIPAIS
     // ==========================================
