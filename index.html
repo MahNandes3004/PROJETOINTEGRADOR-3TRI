@@ -1,539 +1,403 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Integrador - Programacao, IA e Robotica</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Integrador • Programação em Python e Robótica Inclusiva</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">Projeto Integrador - Tecnologia e Acessibilidade</div>
-        <nav class="nav-tabs">
-            <button type="button" class="tab-btn active" onclick="abrirAba('tab-programacao', this)">Programacao e IA</button>
-            <button type="button" class="tab-btn" onclick="abrirAba('tab-robotica', this)">Robotica e Acessibilidade</button>
-        </nav>
-    </header>
+  <!-- BARRA DE ACESSIBILIDADE GLOBAL (ATIVA EM AMBAS AS DIVISÕES) -->
+  <div class="a11y-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+    <span class="a11y-label">Acessibilidade:</span>
+    <button type="button" class="a11y-btn" onclick="alterarFonte(-10)" aria-label="Diminuir tamanho da fonte">A-</button>
+    <button type="button" class="a11y-btn" onclick="alterarFonte(0)" aria-label="Restaurar tamanho padrão da fonte">A</button>
+    <button type="button" class="a11y-btn" onclick="alterarFonte(10)" aria-label="Aumentar tamanho da fonte">A+</button>
+    <button type="button" id="btn-contraste" class="a11y-btn" onclick="alternarContraste()" aria-pressed="false">◐ Alto Contraste</button>
+    <button type="button" id="btn-audiodesc" class="a11y-btn" onclick="alternarAudiodescricao()" aria-pressed="false">🔊 Audiodescrição</button>
+  </div>
 
-    <main class="container">
+  <!-- CABEÇALHO E NAVEGAÇÃO ENTRE AS DUAS DIVISÕES -->
+  <header class="navbar">
+    <div class="logo">Projeto Integrador • Tecnologia &amp; Inclusão</div>
+    <nav class="nav-tabs" role="tablist" aria-label="Divisões do Projeto">
+      <button type="button" role="tab" id="btn-tab-prog" class="tab-btn active" aria-selected="true" onclick="trocarDivisao('div-programacao', this)">💻 1. Programação (Python)</button>
+      <button type="button" role="tab" id="btn-tab-robo" class="tab-btn" aria-selected="false" onclick="trocarDivisao('div-robotica', this)">🤖 2. Robótica (LEDs &amp; Morse)</button>
+    </nav>
+  </header>
 
-        <section id="tab-programacao" class="tab-content active">
+  <main class="container">
 
-            <div class="carousel-container">
-                <div class="carousel-slides">
-                    <div class="slide active">
-                        <div class="slide-badge">Atividade 01 - Seguranca Digital</div>
-                        <h2>Cofre Digital Interativo em Python</h2>
-                        <p>Algoritmo de criptografia com chave secreta para proteger senhas, contatos de emergencia e anotacoes privadas de familiares contra golpes digitais.</p>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-badge">Atividade 02 - Inteligencia Artificial</div>
-                        <h2>Engenharia de Prompt e Leitura Facilitada</h2>
-                        <p>Refinamento de instrucoes em Modelos de Linguagem (LLMs) para traduzir textos medicos e tecnicos em linguagem simples e acessivel.</p>
-                    </div>
-                    <div class="slide">
-                        <div class="slide-badge">Atividade 03 - Ciencia de Dados e Saude</div>
-                        <h2>Modelo Computacional Nutricional</h2>
-                        <p>Sistema em Python que calcula calorias, carboidratos, fibras e sodio, emitindo alertas preventivos para idosos, diabeticos e hipertensos.</p>
-                    </div>
-                </div>
+    <!-- =================================================================== -->
+    <!-- DIVISÃO 1: PROGRAMAÇÃO (PYTHON E PROJETOS DESENVOLVIDOS)            -->
+    <!-- =================================================================== -->
+    <section id="div-programacao" class="tab-content active" role="tabpanel" aria-labelledby="btn-tab-prog">
 
-                <button type="button" class="carousel-btn prev" onclick="mudarSlide(-1)">&#10094;</button>
-                <button type="button" class="carousel-btn next" onclick="mudarSlide(1)">&#10095;</button>
+      <!-- CARROSSEL DE SLIDES INTERATIVO -->
+      <div class="carousel" role="region" aria-roledescription="carrossel" aria-label="Slides dos Projetos de Python">
+        <div class="slide active" data-audiodesc="Slide 1 de 4: Introdução ao Python. Linguagem versátil usada para criar soluções reais de segurança digital, saúde e acessibilidade.">
+          <span class="badge">Slide 01 / 04 • Linguagem Python</span>
+          <h2>Por que Python?</h2>
+          <p>Python possui sintaxe limpa, legível e poderosa, permitindo transformar lógica de programação em ferramentas reais de <b>segurança digital, análise de dados e inclusão</b>.</p>
+        </div>
 
-                <div class="carousel-dots">
-                    <span class="dot active" onclick="irParaSlide(0)"></span>
-                    <span class="dot" onclick="irParaSlide(1)"></span>
-                    <span class="dot" onclick="irParaSlide(2)"></span>
-                </div>
-            </div>
+        <div class="slide" data-audiodesc="Slide 2 de 4: Projeto 1, Cofre Digital em Python. Algoritmo de criptografia com chave secreta para proteger senhas e contatos de emergência de familiares.">
+          <span class="badge">Slide 02 / 04 • Projeto 1</span>
+          <h2>🔐 Cofre Digital Interativo</h2>
+          <p>Sistema de criptografia reversível com chave secreta que embaralha senhas, dados bancários e contatos de emergência para proteger familiares contra golpes digitais.</p>
+        </div>
 
-            <nav class="sub-nav">
-                <a href="#prog-intro">Visao Geral (ABP)</a>
-                <a href="#ativ-1">1. Cofre Digital</a>
-                <a href="#ativ-2">2. IA e Prompts</a>
-                <a href="#ativ-3">3. Modelo Nutricional</a>
-            </nav>
+        <div class="slide" data-audiodesc="Slide 3 de 4: Projeto 2, Inteligência Artificial e Engenharia de Prompt. Uso ético de modelos de linguagem para transformar textos médicos complexos em leitura facilitada.">
+          <span class="badge">Slide 03 / 04 • Projeto 2</span>
+          <h2>🧠 IA &amp; Leitura Facilitada</h2>
+          <p>Refinamento de prompts em Modelos de Linguagem (LLMs) para traduzir bulas e orientações médicas difíceis em linguagem simples para idosos e pessoas com dislexia.</p>
+        </div>
 
-            <article id="prog-intro" class="doc-section">
-                <span class="part-badge">Projeto Integrador - Aprendizagem Baseada em Projetos</span>
-                <h1>Tecnologia, Etica e Qualidade de Vida</h1>
-                <p>Atuamos como desenvolvedores de solucoes tecnologicas reais voltadas a <b>acessibilidade, seguranca digital e qualidade de vida</b>, integrando logica de programacao em Python e uso etico de Inteligencia Artificial.</p>
-            </article>
+        <div class="slide" data-audiodesc="Slide 4 de 4: Projeto 3, Modelo Computacional Nutricional em Python. Sistema que calcula calorias, carboidratos, fibras e sódio e emite alertas preventivos.">
+          <span class="badge">Slide 04 / 04 • Projeto 3</span>
+          <h2>🥗 Calculadora Nutricional Preventiva</h2>
+          <p>Programa em Python que calcula nutrientes proporcionalmente ao peso do alimento e emite alertas automáticos de sódio e carboidratos para hipertensos e diabéticos.</p>
+        </div>
 
-            <article id="ativ-1" class="doc-section">
-                <span class="part-badge">Atividade 1 - Seguranca Digital com Criptografia</span>
-                <h2>Cofre Digital Interativo em Python</h2>
+        <button type="button" class="c-btn prev" onclick="mudarSlide(-1)" aria-label="Slide anterior">&#10094;</button>
+        <button type="button" class="c-btn next" onclick="mudarSlide(1)" aria-label="Próximo slide">&#10095;</button>
 
-                <div class="two-col-layout">
-                    <div>
-                        <h3>O Problema e o Publico Beneficiado</h3>
-                        <p>Familiares idosos ou com pouca experiencia digital costumam anotar senhas e contatos de emergencia em blocos de notas comuns, ficando expostos a golpes na internet.</p>
+        <div class="carousel-footer">
+          <div class="dots">
+            <button type="button" class="dot active" onclick="irParaSlide(0)" aria-label="Ir para slide 1"></button>
+            <button type="button" class="dot" onclick="irParaSlide(1)" aria-label="Ir para slide 2"></button>
+            <button type="button" class="dot" onclick="irParaSlide(2)" aria-label="Ir para slide 3"></button>
+            <button type="button" class="dot" onclick="irParaSlide(3)" aria-label="Ir para slide 4"></button>
+          </div>
+          <button type="button" class="mini-audio-btn" onclick="lerSlideAtual()">🔊 Ouvir este Slide</button>
+        </div>
+      </div>
 
-                        <h3>Como funciona o algoritmo?</h3>
-                        <ul class="clean-list">
-                            <li><b>Entrada de dados (<code>input()</code>):</b> Recebe a mensagem confidencial e uma <b>chave secreta</b>.</li>
-                            <li><b>Criptografia reversivel:</b> Desloca cada caractere conforme a chave e gera um codigo embaralhado seguro.</li>
-                            <li><b>Descriptografia:</b> Ao inserir o codigo embaralhado e a <b>mesma chave</b>, o texto original volta ao normal.</li>
-                        </ul>
+      <nav class="sub-nav" aria-label="Atalhos de Programação">
+        <a href="#sobre-python">Sobre Python</a>
+        <a href="#proj-cofre">Projeto 1: Cofre Digital</a>
+        <a href="#proj-ia">Projeto 2: IA &amp; Prompts</a>
+        <a href="#proj-nutri">Projeto 3: Nutrição</a>
+      </nav>
 
-                        <details class="code-box">
-                            <summary>Ver Codigo-Fonte em Python (Cofre Digital)</summary>
-                            <pre>import base64
+      <article id="sobre-python" class="doc-section">
+        <span class="badge">Fundamentos • Programação</span>
+        <h1>Python Aplicado a Problemas Reais</h1>
+        <p>Nesta divisão reunimos os projetos desenvolvidos em <b>Python</b> e <b>Inteligência Artificial</b>. Cada código foi planejado para resolver problemas cotidianos com foco em <b>clareza, segurança da informação e acessibilidade cognitiva</b>.</p>
+      </article>
+
+      <!-- PROJETO 1: COFRE DIGITAL -->
+      <article id="proj-cofre" class="doc-section">
+        <span class="badge">Projeto 01 • Segurança da Informação</span>
+        <h2>🔐 Cofre Digital Interativo em Python</h2>
+        <div class="grid-2">
+          <div>
+            <h3>O que o projeto faz?</h3>
+            <p>Muitas pessoas com pouca familiaridade digital — especialmente idosos — anotam senhas e contatos de emergência em blocos de notas comuns. Nosso programa em Python usa <code>input()</code> e uma <b>chave secreta</b> para embaralhar (criptografar) o texto e restaurá-lo somente com a mesma chave.</p>
+            <details>
+              <summary>📄 Ver Código-Fonte em Python</summary>
+              <pre>import base64
 
 def criptografar(texto, chave):
     deslocamento = sum(ord(c) for c in chave) % 256
     cifrado = bytes([(b + deslocamento) % 256 for b in texto.encode("utf-8")])
     return base64.b64encode(cifrado).decode("utf-8")
 
-def descriptografar(codigo_b64, chave):
+def descriptografar(codigo, chave):
     deslocamento = sum(ord(c) for c in chave) % 256
-    cifrado = base64.b64decode(codigo_b64.encode("utf-8"))
-    return bytes([(b - deslocamento) % 256 for b in cifrado]).decode("utf-8")
+    dados = base64.b64decode(codigo.encode("utf-8"))
+    return bytes([(b - deslocamento) % 256 for b in dados]).decode("utf-8")
 
-op = input("1 - Criptografar | 2 - Descriptografar: ")
-msg = input("Digite a mensagem ou codigo: ")
-chave = input("Digite a chave secreta: ")
-print(criptografar(msg, chave) if op == "1" else descriptografar(msg, chave))</pre>
-                        </details>
-                    </div>
+modo = input("1 - Criptografar | 2 - Descriptografar: ")
+msg = input("Mensagem ou código: ")
+chave = input("Chave secreta: ")
+print(criptografar(msg, chave) if modo == "1" else descriptografar(msg, chave))</pre>
+            </details>
+          </div>
 
-                    <div class="interactive-panel">
-                        <h4>Testar Prototipo do Cofre Digital</h4>
-                        <p class="panel-hint">Criptografe uma senha ou contato e depois descriptografe com a mesma chave:</p>
+          <div class="panel">
+            <h3>🧪 Simulador do Cofre Digital</h3>
+            <div class="form-group">
+              <label for="cofre-msg">Mensagem confidencial ou código cifrado:</label>
+              <input type="text" id="cofre-msg" value="Contato Emergencia: (43) 99999-1234">
+            </div>
+            <div class="form-group">
+              <label for="cofre-chave">Chave secreta:</label>
+              <input type="text" id="cofre-chave" value="familia2026">
+            </div>
+            <div class="btn-group">
+              <button type="button" class="action-btn" onclick="executarCofre('criptografar')">🔒 Criptografar</button>
+              <button type="button" class="action-btn sec" onclick="executarCofre('descriptografar')">🔓 Descriptografar</button>
+            </div>
+            <div class="result-box" aria-live="polite">
+              <small>Resultado:</small>
+              <strong id="cofre-resultado">Clique em "Criptografar" para proteger o texto.</strong>
+            </div>
+          </div>
+        </div>
+      </article>
 
-                        <div class="form-group">
-                            <label for="cofre-msg">Mensagem confidencial ou codigo embaralhado:</label>
-                            <input type="text" id="cofre-msg" class="form-control" value="Contato Emergencia: (43) 99999-1234">
-                        </div>
+      <!-- PROJETO 2: IA & LEITURA FACILITADA -->
+      <article id="proj-ia" class="doc-section">
+        <span class="badge">Projeto 02 • Inteligência Artificial &amp; Inclusão</span>
+        <h2>🧠 Engenharia de Prompt e Leitura Facilitada</h2>
+        <p>Testamos como o refinamento de comandos em Modelos de Linguagem (LLMs) elimina barreiras de linguagem para <b>idosos, pessoas com dislexia ou baixo letramento</b>:</p>
+        <div class="grid-2">
+          <div class="box">
+            <h3>❌ Prompt Simples (Sem Refinamento)</h3>
+            <p><b>Comando:</b> <i>"Explique esta bula de remédio para pressão alta."</i></p>
+            <p><b>Resultado:</b> Texto longo cheio de termos médicos (<i>"posologia", "vasodilatação"</i>) difíceis de compreender.</p>
+          </div>
+          <div class="box">
+            <h3>✅ Prompt Estruturado (Leitura Facilitada)</h3>
+            <p><b>Comando:</b> <i>"Reescreva em Leitura Facilitada para idosos: frases curtas (até 12 palavras), palavras simples do dia a dia, horários claros e sinais de alerta."</i></p>
+            <p><b>Resultado:</b> Orientação direta por horário (Manhã/Noite), promovendo autonomia e segurança.</p>
+          </div>
+        </div>
+      </article>
 
-                        <div class="form-group">
-                            <label for="cofre-chave">Chave secreta:</label>
-                            <input type="text" id="cofre-chave" class="form-control" value="familia2026">
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="action-btn" onclick="executarCofre('criptografar')">Criptografar</button>
-                            <button type="button" class="action-btn secondary" onclick="executarCofre('descriptografar')">Descriptografar</button>
-                        </div>
-
-                        <div class="result-box">
-                            <small>Saida do sistema:</small>
-                            <strong id="cofre-resultado">Clique em "Criptografar" para gerar o codigo seguro.</strong>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article id="ativ-2" class="doc-section">
-                <span class="part-badge">Atividade 2 - Explorando os LLMs e Engenharia de Prompt</span>
-                <h2>IA e Leitura Facilitada para Inclusao Digital</h2>
-                <p>Investigamos como o refinamento das instrucoes dadas a um Modelo de Linguagem (LLM) transforma textos tecnicos dificeis em comunicacao clara para <b>idosos, pessoas com dislexia ou baixo letramento</b>.</p>
-
-                <div class="prompt-compare">
-                    <div class="prompt-card">
-                        <span class="prompt-badge bad">Teste 1: Prompt Simples (Sem Refinamento)</span>
-                        <p><b>Comando enviado:</b> <i>"Explique esta bula de remedio para hipertensao."</i></p>
-                        <p><b>Resultado:</b> A IA gerou um texto longo cheio de jargoes medicos (<i>"posologia", "vasodilatacao periferica"</i>), mantendo a barreira de compreensao.</p>
-                    </div>
-
-                    <div class="prompt-card refined">
-                        <span class="prompt-badge good">Teste 2: Prompt Estruturado (Refinado)</span>
-                        <p><b>Comando enviado:</b> <i>"Atue como agente de saude. Reescreva estas instrucoes em Leitura Facilitada para uma pessoa idosa: frases curtas (ate 12 palavras), palavras simples, topicos por horario e sinais de alerta."</i></p>
-                        <p><b>Resultado:</b> Texto direto, dividido por horarios (Manha / Noite), sem termos dificeis e com alertas claros.</p>
-                    </div>
-                </div>
-
-                <div class="info-callout">
-                    <h4>Consciencia Etica e Autonomia</h4>
-                    <p>A IA nao substitui profissionais da saude, mas promove <b>autonomia digital</b> quando guiada com empatia e criterios claros.</p>
-                </div>
-            </article>
-
-            <article id="ativ-3" class="doc-section">
-                <span class="part-badge">Atividade 3 - Modelos Computacionais Avancados em Python</span>
-                <h2>Analise Nutricional Automatizada e Acessivel</h2>
-
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Democratizacao dos Dados de Saude</h3>
-                        <p>Idosos, pessoas em reabilitacao alimentar ou com <b>diabetes e hipertensao</b> precisam monitorar calorias, carboidratos, fibras e sodio. Nosso modelo em Python automatiza esse calculo proporcionalmente.</p>
-                        <p>Para garantir responsabilidade etica, o sistema exibe todas as unidades (<code>kcal</code>, <code>g</code>, <code>mg</code>) e gera <b>alertas preventivos</b> quando o sodio ou carboidrato passa dos limites recomendados.</p>
-
-                        <details class="code-box">
-                            <summary>Ver Codigo-Fonte em Python (Modelo Nutricional)</summary>
-                            <pre>ALIMENTOS = {
-    "arroz":   {"kcal": 130, "carb": 28.0, "fibras": 1.6, "sodio": 1},
-    "feijao":  {"kcal": 76,  "carb": 13.6, "fibras": 8.5, "sodio": 2},
-    "frango":  {"kcal": 159, "carb": 0.0,  "fibras": 0.0, "sodio": 50},
-    "salada":  {"kcal": 20,  "carb": 3.5,  "fibras": 2.4, "sodio": 12},
-    "embutido":{"kcal": 290, "carb": 2.5,  "fibras": 0.0, "sodio": 980}
+      <!-- PROJETO 3: MODELO NUTRICIONAL -->
+      <article id="proj-nutri" class="doc-section">
+        <span class="badge">Projeto 03 • Ciência de Dados &amp; Saúde</span>
+        <h2>🥗 Modelo Computacional Nutricional em Python</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Como ajuda na saúde?</h3>
+            <p>Calcula automaticamente energia (<code>kcal</code>), carboidratos (<code>g</code>), fibras (<code>g</code>) e sódio (<code>mg</code>) conforme a porção em gramas, emitindo <b>alertas preventivos</b> para hipertensos e diabéticos.</p>
+            <details>
+              <summary>📄 Ver Código-Fonte em Python</summary>
+              <pre>TABELA = {
+    "arroz":    {"kcal": 130, "carb": 28.0, "fibras": 1.6, "sodio": 1},
+    "feijao":   {"kcal": 76,  "carb": 13.6, "fibras": 8.5, "sodio": 2},
+    "frango":   {"kcal": 159, "carb": 0.0,  "fibras": 0.0, "sodio": 50},
+    "embutido": {"kcal": 290, "carb": 2.5,  "fibras": 0.0, "sodio": 980}
 }
-alim = input("Alimento: ").lower().strip()
-gramas = float(input("Quantidade (g): "))
-if alim in ALIMENTOS:
-    f = gramas / 100.0
-    d = ALIMENTOS[alim]
-    print(f"Energia: {d['kcal']*f:.1f} kcal | Sodio: {d['sodio']*f:.0f} mg")</pre>
-                        </details>
-                    </div>
+alimento = input("Alimento: ").lower().strip()
+gramas = float(input("Gramas: "))
+fator = gramas / 100.0
+dados = TABELA[alimento]
+print(f"Calorias: {dados['kcal']*fator:.1f} kcal | Sódio: {dados['sodio']*fator:.0f} mg")</pre>
+            </details>
+          </div>
 
-                    <div class="interactive-panel">
-                        <h4>Simulador Nutricional Interativo</h4>
-                        <p class="panel-hint">Escolha um alimento e a quantidade em gramas:</p>
+          <div class="panel">
+            <h3>🧮 Simulador Nutricional</h3>
+            <div class="form-group">
+              <label for="nutri-alimento">Alimento (base 100g):</label>
+              <select id="nutri-alimento">
+                <option value="arroz">🍚 Arroz Branco Cozido</option>
+                <option value="feijao">🫘 Feijão Carioca Cozido</option>
+                <option value="frango">🍗 Peito de Frango Grelhado</option>
+                <option value="salada">🥗 Salada de Folhas e Legumes</option>
+                <option value="embutido">🌭 Embutido / Ultraprocessado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nutri-gramas">Quantidade (gramas):</label>
+              <input type="number" id="nutri-gramas" value="150" min="1" max="2000">
+            </div>
+            <button type="button" class="action-btn full-btn" onclick="calcularNutricao()">Calcular Nutrientes</button>
+            <div class="result-box" aria-live="polite">
+              <strong id="res-nutri">195.0 kcal | Carb: 42.0 g | Fibras: 2.4 g | Sódio: 2 mg</strong>
+              <p id="nutri-alerta" class="status-ok">✅ Valores equilibrados para a porção.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
 
-                        <div class="form-group">
-                            <label for="nutri-alimento">Alimento (base 100g):</label>
-                            <select id="nutri-alimento" class="form-control">
-                                <option value="arroz">Arroz Branco Cozido</option>
-                                <option value="feijao">Feijao Carioca Cozido</option>
-                                <option value="frango">Peito de Frango Grelhado</option>
-                                <option value="salada">Salada de Folhas e Legumes</option>
-                                <option value="embutido">Embutido / Ultraprocessado</option>
-                            </select>
-                        </div>
+    <!-- =================================================================== -->
+    <!-- DIVISÃO 2: ROBÓTICA (LEDS, CÓDIGO MORSE VISUAL/AUDITIVO E INCLUSÃO) -->
+    <!-- =================================================================== -->
+    <section id="div-robotica" class="tab-content" role="tabpanel" aria-labelledby="btn-tab-robo">
 
-                        <div class="form-group">
-                            <label for="nutri-gramas">Quantidade consumida (gramas):</label>
-                            <input type="number" id="nutri-gramas" class="form-control" value="150" min="1" max="2000">
-                        </div>
+      <nav class="sub-nav" aria-label="Atalhos de Robótica">
+        <a href="#robo-inclusao">♿ Ajuda a Pessoas com Deficiência</a>
+        <a href="#robo-matriz">🔲 Matriz de LEDs</a>
+        <a href="#robo-morse">⚡ Código Morse (Visual + Auditivo)</a>
+        <a href="#robo-display">📟 Display LCD</a>
+        <a href="#robo-tabela">📊 Comparação</a>
+      </nav>
 
-                        <button type="button" class="action-btn full-btn" onclick="calcularNutricao()">Calcular Nutrientes</button>
+      <!-- COMO A ROBÓTICA AJUDA PESSOAS COM DEFICIÊNCIAS -->
+      <article id="robo-inclusao" class="doc-section">
+        <span class="badge">Acessibilidade &amp; Tecnologia Assistiva</span>
+        <h1>Como LEDs e Código Morse Ajudam Pessoas com Deficiências?</h1>
+        <p>Combinar <b>sinais visuais (LEDs e Displays)</b> com <b>sinais auditivos (Buzzer em Código Morse)</b> derruba barreiras de comunicação em escolas, hospitais e espaços públicos, garantindo autonomia para diferentes perfis de usuários:</p>
 
-                        <div class="nutri-badges">
-                            <div class="nutri-stat"><small>Energia</small><strong id="res-kcal">195.0 kcal</strong></div>
-                            <div class="nutri-stat"><small>Carboidratos</small><strong id="res-carb">42.0 g</strong></div>
-                            <div class="nutri-stat"><small>Fibras</small><strong id="res-fibras">2.4 g</strong></div>
-                            <div class="nutri-stat"><small>Sodio</small><strong id="res-sodio">2 mg</strong></div>
-                        </div>
+        <div class="grid-cards">
+          <div class="box">
+            <h3>👂 Deficiência Auditiva (Surdez)</h3>
+            <p>Alarmes puramente sonoros não são percebidos por pessoas surdas. A <b>Matriz de LEDs</b> e as <b>piscadas luminosas do Código Morse</b> convertem alertas e pedidos de socorro em sinais visuais de alto brilho.</p>
+          </div>
+          <div class="box">
+            <h3>👁️ Deficiência Visual (Cegueira / Baixa Visão)</h3>
+            <p>Telas e placas escritas excluem pessoas cegas. O <b>Buzzer (campainha sonora)</b> emite bipes curtos e longos em Código Morse, permitindo identificar alertas e mensagens pelo ouvido sem depender da visão.</p>
+          </div>
+          <div class="box">
+            <h3>🦾 Deficiência Motora Severa / Não Verbais</h3>
+            <p>Pessoas com tetraplegia, ELA ou afasia (sem fala) podem acionar um <b>único botão adaptado</b> (toque leve, sopro ou piscar) para transmitir <code>SOS</code>, <code>AJUDA</code>, <code>SIM</code> ou <code>NÃO</code> via LED e Buzzer.</p>
+          </div>
+          <div class="box">
+            <h3>🧠 Deficiência Intelectual / Baixo Letramento</h3>
+            <p>Ícones simples na <b>Matriz de LEDs</b> (como rosto feliz/triste, cruz de socorro ou seta de saída) comunicam necessidades imediatas sem exigir leitura de textos longos.</p>
+          </div>
+        </div>
+      </article>
 
-                        <div id="nutri-alerta" class="alert-banner ok">
-                            Valores equilibrados para a porcao informada.
-                        </div>
-                    </div>
-                </div>
-            </article>
+      <!-- PROJETO ROBÓTICA 1: MATRIZ DE LEDS -->
+      <article id="robo-matriz" class="doc-section">
+        <span class="badge">Recurso Visual • Matriz de LEDs</span>
+        <h2>🔲 Matriz de LEDs para Comunicação Rápida</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Como funciona?</h3>
+            <p>Uma matriz de LEDs organiza diodos luminosos em <b>linhas e colunas</b>. O microcontrolador acende coordenadas específicas (<i>multiplexação</i>) para desenhar símbolos universais, emoções ou setas de direção visíveis mesmo em ambientes barulhentos.</p>
+            <div class="pros"><b>✅ Vantagens:</b> Alto brilho, leitura visual instantânea e independência de alfabetização.</div>
+            <div class="cons"><b>⚠️ Limitações:</b> Baixa resolução para frases longas; perda de contraste sob sol forte; exige apoio sonoro para pessoas cegas.</div>
+          </div>
 
-        </section>
+          <div class="panel center">
+            <h3>🧪 Simulador: Matriz de LEDs 5x5</h3>
+            <p class="panel-hint">Escolha um símbolo para acender os LEDs e ouvir a audiodescrição:</p>
+            <div id="led-matrix-grid" class="matrix-grid" role="img" aria-label="Matriz de LEDs 5 por 5 exibindo símbolo de alegria"></div>
+            <p><strong id="matrix-label">Símbolo: Alegria / Bem-estar</strong></p>
+            <div class="btn-group">
+              <button type="button" class="chip-btn" onclick="desenharMatriz('feliz', true)">😊 Alegria</button>
+              <button type="button" class="chip-btn" onclick="desenharMatriz('triste', true)">😢 Dor/Tristeza</button>
+              <button type="button" class="chip-btn" onclick="desenharMatriz('alerta', true)">⚠️ Atenção (!)</button>
+              <button type="button" class="chip-btn" onclick="desenharMatriz('ajuda', true)">➕ Ajuda (+)</button>
+              <button type="button" class="chip-btn" onclick="desenharMatriz('seta', true)">➡️ Saída</button>
+            </div>
+          </div>
+        </div>
+      </article>
 
+      <!-- PROJETO ROBÓTICA 2: CÓDIGO MORSE (VISUAL + AUDITIVO) -->
+      <article id="robo-morse" class="doc-section">
+        <span class="badge">Recurso Visual + Auditivo • Código Morse</span>
+        <h2>⚡ Código Morse: Luz (LED) e Som (Buzzer)</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Comunicação Dupla: Visual e Auditiva</h3>
+            <p>O Código Morse codifica letras em <b>pulsos curtos (pontos <code>•</code>)</b> e <b>pulsos longos (traços <code>—</code>)</b>. No protótipo com Arduino, cada pulso aciona simultaneamente:</p>
+            <ul>
+              <li><b>LED (Sinal Visual):</b> Pisca curto ou longo para pessoas surdas ou ambientes barulhentos.</li>
+              <li><b>Buzzer (Sinal Auditivo):</b> Emite bipe curto (200ms) ou longo (600ms) para pessoas cegas ou chamadas à distância.</li>
+            </ul>
+            <div class="box">
+              <span>Exemplo: <b>AJUDA</b> = <code>• —</code> (A) &nbsp; <code>• — — —</code> (J) &nbsp; <code>• • —</code> (U) &nbsp; <code>— • •</code> (D) &nbsp; <code>• —</code> (A)</span>
+            </div>
+          </div>
 
-        <section id="tab-robotica" class="tab-content">
+          <div class="panel center">
+            <h3>🔦🔊 Simulador Visual e Auditivo de Morse</h3>
+            <div class="led-stage">
+              <div id="led-lamp" class="led-off" role="img" aria-label="LED indicador desligado"></div>
+              <strong id="led-status" aria-live="polite">Circuito em Espera</strong>
+            </div>
 
-            <nav class="sub-nav">
-                <a href="#parte-a">A. Apresentacao</a>
-                <a href="#parte-b">B. Matriz LEDs</a>
-                <a href="#parte-c">C. Morse</a>
-                <a href="#parte-d">D. Display</a>
-                <a href="#parte-e">E. Comparacao</a>
-                <a href="#parte-f">F. Qualidade Vida</a>
-                <a href="#parte-g">G. Uso IA</a>
-                <a href="#parte-h">H. Melhoria</a>
-                <a href="#parte-i">I. Conclusao</a>
-                <a href="#parte-j">J. Fontes</a>
-            </nav>
+            <div class="audio-controls-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="buzzer-enabled" checked> 🔊 Som do Buzzer (Auditivo)
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="morse-narrar" checked> 🗣️ Narrar palavra antes
+              </label>
+            </div>
 
-            <article id="parte-a" class="doc-section">
-                <span class="part-badge">Parte A - Apresentacao do Tema</span>
-                <h1>Tecnologia que Conecta: Comunicacao, Autonomia e Inclusao</h1>
-                <p class="group-meta"><b>Integrantes do Grupo:</b> [Preencher nomes do grupo]</p>
+            <div class="btn-group">
+              <button type="button" class="chip-btn" onclick="iniciarMorse('AJUDA')">🚨 AJUDA</button>
+              <button type="button" class="chip-btn" onclick="iniciarMorse('SOS')">🆘 SOS</button>
+              <button type="button" class="chip-btn" onclick="iniciarMorse('SIM')">✅ SIM</button>
+              <button type="button" class="chip-btn" onclick="iniciarMorse('NAO')">❌ NÃO</button>
+            </div>
 
-                <div class="motriz-banner">
-                    <strong>Questao Motriz:</strong> "Como a ciencia, a tecnologia e as ferramentas de Inteligencia Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?"
-                </div>
+            <div class="sim-controls">
+              <input type="text" id="morse-input" maxlength="16" placeholder="Digite uma palavra (ex: AGUA)..." aria-label="Palavra para transmitir em Código Morse">
+              <button type="button" class="action-btn" onclick="transmitirDigitado()">Transmitir</button>
+              <button type="button" class="stop-btn" onclick="pararMorse()">Parar</button>
+            </div>
 
-                <div class="cards-grid">
-                    <div class="mini-card">
-                        <h3>Acessibilidade</h3>
-                        <p>Garantir que qualquer pessoa, com ou sem deficiencia, consiga usar espacos, equipamentos e informacoes com seguranca e autonomia.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>Comunicacao</h3>
-                        <p>Expressar ideias, necessidades e sentimentos e compreender mensagens por fala, escrita, gestos, sons ou sinais visuais.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h3>Qualidade de Vida</h3>
-                        <p>Ter bem-estar fisico, emocional e social, dignidade para tomar decisoes proprias e participacao ativa na sociedade.</p>
-                    </div>
-                </div>
+            <div class="result-box">
+              <small>Código Morse gerado:</small>
+              <strong id="morse-output">• — &nbsp; • — — — &nbsp; • • — &nbsp; — • • &nbsp; • —</strong>
+            </div>
+          </div>
+        </div>
+      </article>
 
-                <div class="info-callout">
-                    <h4>Situacao Concreta de Barreira na Comunicacao</h4>
-                    <p>Um paciente hospitalizado ou estudante com paralisia motora severa ou afasia nao consegue falar nem escrever. Em um ambiente movimentado, ele pode sentir dor ou sede sem conseguir avisar quem esta perto. Investigaremos como <b>Matriz de LEDs, Codigo Morse e Display</b> reduzem essas barreiras.</p>
-                </div>
-            </article>
+      <!-- PROJETO ROBÓTICA 3: DISPLAY LCD -->
+      <article id="robo-display" class="doc-section">
+        <span class="badge">Recurso Textual • Display LCD</span>
+        <h2>📟 Display (Visor LCD 16x2)</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Orientação Escrita e Limites</h3>
+            <p>O Display exibe palavras e instruções diretas sem exigir decodificação. Porém, <b>o texto escrito sozinho não basta</b>: precisa ser combinado com saída de voz e alto contraste para atender pessoas cegas ou com baixa visão.</p>
+          </div>
+          <div class="panel center">
+            <h3>🧪 Simulador: Display LCD 16x2</h3>
+            <div class="lcd" role="img" aria-label="Visor LCD exibindo: Atendimento Prioritário 2">
+              <div id="lcd-line-1">ATENDIMENTO     </div>
+              <div id="lcd-line-2">PRIORITARIO -&gt; 2</div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="chip-btn" onclick="mudarLcd('ATENDIMENTO', 'PRIORITARIO -> 2')">🏥 Orientação</button>
+              <button type="button" class="chip-btn" onclick="mudarLcd('PRECISO DE AJUDA', 'CHAMAR MONITOR')">🙋 Pedido de Ajuda</button>
+              <button type="button" class="chip-btn" onclick="mudarLcd('ALERTA SONORO!', 'SAIDA EMERGENCIA')">🚨 Alerta Segurança</button>
+            </div>
+          </div>
+        </div>
+      </article>
 
-            <article id="parte-b" class="doc-section">
-                <span class="part-badge">Parte B - Recurso 1</span>
-                <h2>Matriz de LEDs</h2>
+      <!-- TABELA COMPARATIVA -->
+      <article id="robo-tabela" class="doc-section">
+        <span class="badge">Síntese • Acessibilidade Multimodal</span>
+        <h2>📊 Comparação dos Recursos Assistivos</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Recurso</th>
+                <th>Canal Sensorial</th>
+                <th>Público Beneficiado</th>
+                <th>Adaptação para Inclusão Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Matriz de LEDs</b></td>
+                <td>Visual (Ícones e setas)</td>
+                <td>Pessoas surdas, não alfabetizadas e ambientes ruidosos</td>
+                <td>Combinar com alerta sonoro ou vibratório para pessoas cegas.</td>
+              </tr>
+              <tr>
+                <td><b>Código Morse</b></td>
+                <td>Visual (LED) + Auditivo (Buzzer)</td>
+                <td>Pessoas com paralisia motora severa (1 botão), cegos e surdos</td>
+                <td>Acionador leve/sopro + tradutor automático em voz e tela.</td>
+              </tr>
+              <tr>
+                <td><b>Display LCD</b></td>
+                <td>Visual (Texto direto)</td>
+                <td>Atendimento ao público, filas e orientações detalhadas</td>
+                <td>Alto contraste, fonte ampliada e leitura em voz alta (audiodescrição).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
 
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona?</h3>
-                        <p>Placa formada por diodos organizados em <b>linhas e colunas</b> (grade 8x8). O microcontrolador acende coordenadas especificas rapidamente (<i>multiplexacao</i>), formando desenhos, setas ou simbolos.</p>
-                        <ul class="clean-list">
-                            <li><b>Emocoes e Necessidades:</b> Rosto alegre, rosto triste, atencao (<code>!</code>) ou ajuda (<code>+</code>).</li>
-                            <li><b>Direcao e Uso Concreto:</b> Setas para saida acessivel ou alerta visual na mesa de aluno nao verbal em sala barulhenta.</li>
-                        </ul>
-                        <div class="pros-cons">
-                            <div class="pros"><b>Vantagens:</b> Alto brilho, resposta imediata e leitura visual por icones simples.</div>
-                            <div class="cons"><b>Limitacoes:</b> Baixa resolucao para frases longas; perda de visibilidade sob sol forte ou longa distancia; exige conhecer o simbolo.</div>
-                        </div>
-                    </div>
+    </section>
 
-                    <div class="interactive-panel centered">
-                        <h4>Previa Interativa: Matriz de LEDs (5x5)</h4>
-                        <p class="panel-hint">Clique nos botoes para alternar os simbolos:</p>
-                        <div id="led-matrix-grid" class="matrix-grid"></div>
-                        <div id="matrix-label" class="matrix-caption">Simbolo: Alegria / Bem-estar</div>
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" onclick="desenharMatriz('feliz')">Alegria</button>
-                            <button type="button" class="chip-btn" onclick="desenharMatriz('triste')">Tristeza</button>
-                            <button type="button" class="chip-btn" onclick="desenharMatriz('alerta')">Atencao</button>
-                            <button type="button" class="chip-btn" onclick="desenharMatriz('ajuda')">Ajuda</button>
-                            <button type="button" class="chip-btn" onclick="desenharMatriz('seta')">Direcao</button>
-                        </div>
-                        <div class="media-placeholder">
-                            <strong>Print do Tinkercad (Matriz de LEDs)</strong>
-                            <p>[Inserir captura de tela do circuito da Matriz de LEDs]</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
+  </main>
 
-            <article id="parte-c" class="doc-section">
-                <span class="part-badge">Parte C - Recurso 2</span>
-                <h2>Codigo Morse</h2>
+  <footer>
+    <p>© 2026 • Projeto Integrador — Programação em Python, Inteligência Artificial e Robótica Inclusiva</p>
+  </footer>
 
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona?</h3>
-                        <p>Representa letras e numeros por <b>sinais curtos (pontos)</b> e <b>sinais longos (tracos)</b>. No circuito, o <b>botao</b> envia o pulso, o <b>LED</b> pisca e o <b>buzzer</b> emite bipes sonoros.</p>
-                        <div class="morse-example-box">
-                            <span>Mensagem: <b>AJUDA</b> = <code>.-</code> (A) <code>.---</code> (J) <code>..-</code> (U) <code>-..</code> (D) <code>.-</code> (A)</span>
-                        </div>
-                        <p><b>Situacao concreta:</b> Pessoas com tetraplegia ou ELA acionam um unico botao adaptado para pedir socorro ou responder SIM/NAO.</p>
-                        <div class="pros-cons">
-                            <div class="pros"><b>Vantagens:</b> Exige apenas um comando simples e combina luz (LED) e som (buzzer).</div>
-                            <div class="cons"><b>Limitacoes:</b> Exige decodificacao; som nao atende surdos; luz nao atende cegos; requer adaptacao fisica do botao.</div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-panel centered">
-                        <h4>Simulador: LED + Buzzer em Morse</h4>
-                        <div class="led-stage">
-                            <div id="led-lamp" class="led-off"></div>
-                            <span id="led-status">Circuito em Espera</span>
-                        </div>
-                        <label class="sound-toggle">
-                            <input type="checkbox" id="buzzer-enabled" checked> Ativar som do Buzzer
-                        </label>
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" onclick="iniciarMorse('AJUDA')">AJUDA</button>
-                            <button type="button" class="chip-btn" onclick="iniciarMorse('SOS')">SOS</button>
-                            <button type="button" class="chip-btn" onclick="iniciarMorse('SIM')">SIM</button>
-                            <button type="button" class="chip-btn" onclick="iniciarMorse('NAO')">NAO</button>
-                        </div>
-                        <div class="sim-controls">
-                            <input type="text" id="morse-input" maxlength="18" placeholder="Digite uma palavra...">
-                            <button type="button" class="action-btn" onclick="transmitirDigitado()">Transmitir</button>
-                            <button type="button" class="stop-btn" onclick="pararMorse()">Parar</button>
-                        </div>
-                        <div class="morse-display">
-                            <small>Sinais gerados:</small>
-                            <div id="morse-output">.- .--- ..- -.. .-</div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article id="parte-d" class="doc-section">
-                <span class="part-badge">Parte D - Recurso 3</span>
-                <h2>Display (Visor LCD / OLED)</h2>
-
-                <div class="two-col-layout">
-                    <div>
-                        <h3>Como funciona e limites de acessibilidade</h3>
-                        <p>Tela eletronica que exibe <b>letras, numeros e frases curtas</b> para orientar ou alertar em hospitais e escolas. Porem, <b>o texto sozinho nao garante acessibilidade universal</b>: pessoas cegas, com baixa visao, nao alfabetizadas ou estrangeiras ainda enfrentam barreiras.</p>
-                        <div class="pros-cons">
-                            <div class="pros"><b>Vantagens:</b> Mensagem escrita direta, sem necessidade de decodificar simbolos.</div>
-                            <div class="cons"><b>Limitacoes:</b> Tela pequena (2x16), contraste limitado, idioma e inacessivel para cegos sem audio.</div>
-                        </div>
-                    </div>
-
-                    <div class="interactive-panel centered">
-                        <h4>Previa Interativa: Display LCD 16x2</h4>
-                        <div class="lcd-screen">
-                            <div id="lcd-line-1">ATENDIMENTO     </div>
-                            <div id="lcd-line-2">PRIORITARIO -&gt; 2</div>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="chip-btn" onclick="mudarLcd('ATENDIMENTO', 'PRIORITARIO -> 2')">Orientacao</button>
-                            <button type="button" class="chip-btn" onclick="mudarLcd('PRECISO DE AJUDA', 'CHAMAR MONITOR')">Pedido Ajuda</button>
-                            <button type="button" class="chip-btn" onclick="mudarLcd('ALERTA SONORO!', 'SAIDA EMERGENCIA')">Seguranca</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article id="parte-e" class="doc-section">
-                <span class="part-badge">Parte E - Analise Comparativa</span>
-                <h2>Comparacao dos Tres Recursos</h2>
-                <div class="table-wrapper">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Recurso</th>
-                                <th>O que comunica</th>
-                                <th>Situacao mais util</th>
-                                <th>Vantagens e Limitacoes</th>
-                                <th>Adaptacoes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><b>Matriz de LEDs</b></td>
-                                <td>Icones, setas e simbolos.<br><span class="tag">Visual</span></td>
-                                <td>Locais barulhentos e alertas imediatos.</td>
-                                <td>Alto brilho; baixa resolucao e ruim sob sol forte.</td>
-                                <td>Icones intuitivos e ajuste de brilho.</td>
-                            </tr>
-                            <tr>
-                                <td><b>Codigo Morse</b></td>
-                                <td>Pulsos curtos e longos.<br><span class="tag">Visual + Sonoro</span></td>
-                                <td>Emergencias com apenas 1 botao adaptado.</td>
-                                <td>Comando unico; exige decodificacao, som nao atende surdos e luz nao atende cegos.</td>
-                                <td>Acionador leve, tradutor em tela e vibracao.</td>
-                            </tr>
-                            <tr>
-                                <td><b>Display LCD</b></td>
-                                <td>Palavras, numeros e frases.<br><span class="tag">Visual (Texto)</span></td>
-                                <td>Atendimento ao publico e orientacoes detalhadas.</td>
-                                <td>Texto direto; tela pequena, barreira de leitura/idioma e inacessivel a cegos.</td>
-                                <td>Alto contraste, leitura por voz e relevo tatil.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article id="parte-f" class="doc-section">
-                <span class="part-badge">Parte F - Impacto Social</span>
-                <h2>Relacao com a Qualidade de Vida</h2>
-                <div class="scenario-card">
-                    <h3>Cenario: Pedido de ajuda em escola ou hospital movimentado</h3>
-                    <div class="cards-grid">
-                        <div class="mini-card">
-                            <h4>1. Matriz de LEDs</h4>
-                            <p><b>Beneficiado:</b> Usuario e equipe proxima. <b>Reduz:</b> Barreira do barulho com icone brilhante. <b>Permanece:</b> Nao detalha o motivo.</p>
-                        </div>
-                        <div class="mini-card">
-                            <h4>2. Codigo Morse</h4>
-                            <p><b>Beneficiado:</b> Pessoas com tetraplegia. <b>Reduz:</b> Permite pedir ajuda com 1 toque leve. <b>Permanece:</b> Exige que o receptor entenda Morse.</p>
-                        </div>
-                        <div class="mini-card">
-                            <h4>3. Display</h4>
-                            <p><b>Beneficiado:</b> Atendentes e alfabetizados. <b>Reduz:</b> Ambiguidade exibindo a frase exata. <b>Permanece:</b> Nao atende pessoas cegas.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <article id="parte-g" class="doc-section">
-                <span class="part-badge">Parte G - Etica e Verificacao</span>
-                <h2>Uso Responsavel da Inteligencia Artificial</h2>
-                <p>Usamos o <b>Google Gemini</b> para organizar pesquisas e revisar codigos, conferindo tudo na documentacao do Arduino/Tinkercad e reescrevendo com nossas palavras.</p>
-                <div class="table-wrapper">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Pergunta feita a IA</th>
-                                <th>Resposta da IA</th>
-                                <th>Como verificamos</th>
-                                <th>O que alteramos</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><i>"Como painel de LED e Morse ajudam pessoas com mobilidade reduzida?"</i></td>
-                                <td>Explicou pulsos curtos/longos e citou paineis de LED de modo generico.</td>
-                                <td>Conferimos no roteiro e nos guias de matrizes 8x8 e displays LCD 16x2.</td>
-                                <td>Diferenciamos <b>Matriz de LEDs</b> (icones) de <b>Display LCD</b> (texto).</td>
-                            </tr>
-                            <tr>
-                                <td><i>"Como ligar buzzer e LED no Arduino para Codigo Morse?"</i></td>
-                                <td>Indicou LED com resistor de 220 ohms e buzzer com <code>tone()</code>.</td>
-                                <td>Testamos os componentes na simulacao do Tinkercad.</td>
-                                <td>Mantivemos o resistor e acrescentamos a funcao do botao de entrada.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </article>
-
-            <article id="parte-h" class="doc-section">
-                <span class="part-badge">Parte H - Inovacao Conceitual</span>
-                <h2>Proposta de Melhoria: Comunicador Multimodal Adaptavel</h2>
-                <p class="note-tag">*Proposta conceitual planejada pelo grupo, ainda nao construida fisicamente.</p>
-                <div class="cards-grid">
-                    <div class="mini-card">
-                        <h4>1. Dificuldade</h4>
-                        <p>Recursos visuais excluem cegos e alertas sonoros excluem surdos.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h4>2. Modificacao</h4>
-                        <p>Unir Display de alto contraste, Matriz de LEDs, saida de voz em audio e motor de vibracao no botao.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h4>3. Publico</h4>
-                        <p>Pessoas com deficiencia visual, auditiva, motora ou nao alfabetizadas.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h4>4. Verificacao</h4>
-                        <p>Testes simulados em sala com voluntarios vendados e com protetores auriculares medindo acertos sem ajuda.</p>
-                    </div>
-                </div>
-            </article>
-
-            <article id="parte-i" class="doc-section">
-                <span class="part-badge">Parte I - Sintese Final</span>
-                <h2>Conclusao</h2>
-                <p>A ciencia, a tecnologia e a IA melhoram a qualidade de vida quando sao planejadas para as <b>necessidades reais das pessoas</b>. Nenhuma tecnologia resolve tudo sozinha: a Matriz de LEDs comunica rapido por icones, o Codigo Morse funciona com um unico movimento e o Display traz clareza escrita. Combinar recursos e revisar criticamente o uso da IA garante inclusao real.</p>
-            </article>
-
-            <article id="parte-j" class="doc-section">
-                <span class="part-badge">Parte J - Referencias</span>
-                <h2>Fontes e Creditos</h2>
-                <ul class="clean-list">
-                    <li><b>Arduino Docs:</b> <a href="https://docs.arduino.cc/" target="_blank">docs.arduino.cc</a></li>
-                    <li><b>Autodesk Tinkercad:</b> <a href="https://www.tinkercad.com/" target="_blank">tinkercad.com</a></li>
-                    <li><b>W3C WAI (Acessibilidade):</b> <a href="https://www.w3.org/WAI/" target="_blank">w3.org/WAI</a></li>
-                    <li><b>Creditos:</b> Simuladores estruturados pelo grupo com apoio de codigo da IA Google Gemini, revisados pela equipe.</li>
-                </ul>
-            </article>
-
-        </section>
-
-    </main>
-
-    <footer>
-        <p>2026 - Projeto Integrador - Inteligencia Artificial, Programacao e Robotica</p>
-    </footer>
-
-    <script>
-        function abrirAba(id, btn) {
-            document.querySelectorAll('.tab-content').forEach(function(el) { el.style.display = 'none'; el.classList.remove('active'); });
-            document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-            var alvo = document.getElementById(id);
-            if (alvo) { alvo.style.display = 'block'; alvo.classList.add('active'); }
-            if (btn) btn.classList.add('active');
-            if (id !== 'tab-robotica') pararMorse();
-        }
-
-        var slideAtual = 0;
-        function mostrarSlide(n) {
-            var slides = document.querySelectorAll('.slide'), dots = document.querySelectorAll('.dot');
-            if (!slides.length) return;
-            slideAtual = (n + slides.length) % slides.length;
-            slides.forEach(function(s, i) { s.style.display = i === slideAtual ? 'block' : 'none'; s.classList.toggle('active', i === slideAtual); });
-            dots.for
+  <script src="script.js"></script>
+</body>
+</html>
