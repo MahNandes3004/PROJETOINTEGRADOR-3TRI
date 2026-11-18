@@ -1,95 +1,318 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projeto Integrador: Tecnologia, Acessibilidade e Qualidade de Vida</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Integrador • Programação, IA e Robótica Inclusiva</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
-  <!-- Barra de Acessibilidade do Próprio Site -->
-  <div class="a11y-bar" role="region" aria-label="Ferramentas de acessibilidade da página">
-    <div class="container a11y-controls">
-      <span class="a11y-label">Acessibilidade do site:</span>
-      <div class="a11y-buttons">
-        <button type="button" id="btn-contrast" aria-pressed="false">Alto Contraste</button>
-        <button type="button" id="btn-font-dec" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button type="button" id="btn-font-reset" aria-label="Restaurar tamanho da fonte">A</button>
-        <button type="button" id="btn-font-inc" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button type="button" id="btn-reading" aria-pressed="false">Espaçamento de Leitura</button>
-      </div>
-      <span id="a11y-status" class="sr-only" aria-live="polite"></span>
-    </div>
-  </div>
+    <header class="navbar">
+        <div class="logo">🚀 Projeto Integrador • Tecnologia & Acessibilidade</div>
+        <nav class="nav-tabs">
+            <button type="button" class="tab-btn active" onclick="abrirAba('tab-programacao', this)">💻 Programação & IA</button>
+            <button type="button" class="tab-btn" onclick="abrirAba('tab-robotica', this)">🤖 Robótica & Acessibilidade</button>
+        </nav>
+    </header>
 
-  <!-- Cabeçalho Principal -->
-  <header class="site-header">
-    <div class="container">
-      <p class="badge">Projeto Integrador • Robótica, Programação e Inteligência Artificial</p>
-      <h1>Tecnologia Inclusiva: Comunicação, Ética e Autonomia</h1>
-      <p class="subtitle">
-        Investigação sobre como recursos de robótica, algoritmos e Inteligência Artificial podem reduzir barreiras e ampliar a qualidade de vida.
-      </p>
-      <div class="group-meta" aria-label="Identificação do grupo">
-        <span><strong>Grupo:</strong> Equipe Tecnologia &amp; Inclusão</span>
-        <span><strong>Turma:</strong> Ensino Médio • 3º Trimestre</span>
-      </div>
-    </div>
+    <main class="container">
 
-    <nav class="main-nav" aria-label="Navegação principal">
-      <div class="container">
-        <ul>
-          <li><a href="#introducao">1. Introdução</a></li>
-          <li><a href="#matriz-leds">2. Matriz de LEDs</a></li>
-          <li><a href="#codigo-morse">3. Código Morse</a></li>
-          <li><a href="#display">4. Display</a></li>
-          <li><a href="#comparacao">5. Comparativo &amp; Caso Real</a></li>
-          <li><a href="#eixos-integrador">6. Segurança, IA &amp; Saúde</a></li>
-          <li><a href="#uso-ia">7. Uso Crítico da IA</a></li>
-          <li><a href="#melhoria-conclusao">8. Melhoria &amp; Conclusão</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+        <!-- =============================================================== -->
+        <!-- ABA 1: PROGRAMAÇÃO & IA (ATIVIDADES 1, 2 E 3)                   -->
+        <!-- =============================================================== -->
+        <section id="tab-programacao" class="tab-content active">
 
-  <main id="conteudo-principal" class="container">
-    <!-- Questão Motriz -->
-    <section class="motriz-banner" aria-labelledby="titulo-motriz">
-      <h2 id="titulo-motriz">Questão Motriz do Projeto</h2>
-      <blockquote>
-        “Como a ciência, a tecnologia e as ferramentas de Inteligência Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?”
-      </blockquote>
-    </section>
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="slide active">
+                        <div class="slide-badge">Atividade 01 • Segurança Digital</div>
+                        <h2>🔐 Cofre Digital Interativo em Python</h2>
+                        <p>Algoritmo de criptografia com chave secreta desenvolvido para proteger senhas, contatos de emergência e anotações privadas de familiares contra golpes digitais.</p>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-badge">Atividade 02 • Inteligência Artificial</div>
+                        <h2>🧠 Engenharia de Prompt & Leitura Facilitada</h2>
+                        <p>Refinamento de instruções em Modelos de Linguagem (LLMs) para traduzir textos médicos e técnicos complexos em linguagem simples, garantindo autonomia cognitiva.</p>
+                    </div>
+                    <div class="slide">
+                        <div class="slide-badge">Atividade 03 • Ciência de Dados & Saúde</div>
+                        <h2>🥗 Modelo Computacional Nutricional</h2>
+                        <p>Sistema automatizado em Python que calcula calorias, macronutrientes, fibras e sódio, emitindo alertas preventivos para idosos, diabéticos e hipertensos.</p>
+                    </div>
+                </div>
 
-    <!-- PARTE A: Apresentação e Introdução -->
-    <section id="introducao" class="card-section" aria-labelledby="titulo-intro">
-      <div class="section-header">
-        <span class="step-tag">Parte A</span>
-        <h2 id="titulo-intro">Apresentação do Tema: Acessibilidade, Comunicação e Qualidade de Vida</h2>
-      </div>
+                <button type="button" class="carousel-btn prev" onclick="mudarSlide(-1)" aria-label="Slide anterior">&#10094;</button>
+                <button type="button" class="carousel-btn next" onclick="mudarSlide(1)" aria-label="Próximo slide">&#10095;</button>
 
-      <div class="grid-3">
-        <article class="info-box">
-          <h3>Acessibilidade</h3>
-          <p>
-            É a condição que permite que qualquer pessoa — independentemente de suas características físicas, sensoriais, cognitivas ou idade — utilize espaços, informações e tecnologias com segurança e autonomia, sem depender constantemente de terceiros.
-          </p>
-        </article>
-        <article class="info-box">
-          <h3>Comunicação</h3>
-          <p>
-            É o processo de troca de mensagens, alertas, necessidades e sentimentos entre pessoas ou entre sistemas e usuários. Quando ocorre por múltiplos canais (visual, sonoro e tátil), reduz falhas e exclusões.
-          </p>
-        </article>
-        <article class="info-box">
-          <h3>Qualidade de Vida</h3>
-          <p>
-            Envolve bem-estar físico, emocional e social, dignidade, segurança e liberdade de escolha no cotidiano. A tecnologia promove qualidade de vida quando resolve problemas reais das pessoas.
-          </p>
-        </article>
-      </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="irParaSlide(0)"></span>
+                    <span class="dot" onclick="irParaSlide(1)"></span>
+                    <span class="dot" onclick="irParaSlide(2)"></span>
+                </div>
+            </div>
 
-      <div class="highlight-box">
-        <h3>Sit
+            <nav class="sub-nav" aria-label="Atividades de Programação e IA">
+                <a href="#prog-intro">Visão Geral (ABP)</a>
+                <a href="#ativ-1">1. Cofre Digital (Python)</a>
+                <a href="#ativ-2">2. IA & Engenharia de Prompt</a>
+                <a href="#ativ-3">3. Análise Nutricional (Python)</a>
+            </nav>
+
+            <article id="prog-intro" class="doc-section">
+                <span class="part-badge">Projeto Integrador • Aprendizagem Baseada em Projetos</span>
+                <h1>Tecnologia, Ética e Qualidade de Vida</h1>
+                <p>Neste projeto, atuamos como desenvolvedores de soluções tecnológicas reais voltadas à <b>acessibilidade, segurança digital e qualidade de vida</b>, integrando lógica de programação em Python e uso ético de Inteligência Artificial.</p>
+            </article>
+
+            <!-- ATIVIDADE 1 -->
+            <article id="ativ-1" class="doc-section">
+                <span class="part-badge">Atividade 1 • Segurança Digital com Criptografia</span>
+                <h2>🔐 Cofre Digital Interativo em Python</h2>
+
+                <div class="two-col-layout">
+                    <div>
+                        <h3>O Problema e o Público Beneficiado</h3>
+                        <p>Muitas pessoas — especialmente familiares idosos ou com pouca familiaridade digital — anotam senhas, dados bancários e contatos de emergência em blocos de notas comuns, ficando vulneráveis a vazamentos e golpes na internet.</p>
+
+                        <h3>Como funciona o algoritmo?</h3>
+                        <ul class="clean-list">
+                            <li><b>Entrada de dados (<code>input()</code>):</b> O usuário informa a mensagem confidencial e define uma <b>chave secreta</b>.</li>
+                            <li><b>Criptografia reversível:</b> Cada caractere é deslocado conforme a chave secreta e convertido em código seguro.</li>
+                            <li><b>Descriptografia:</b> Ao colar o código embaralhado e digitar exatamente a <b>mesma chave</b>, o sistema restaura o texto original.</li>
+                        </ul>
+
+                        <h3>Validação e Experiência do Usuário</h3>
+                        <p>Testamos o fluxo em equipe e com colegas de outro grupo: criptografamos um contato de emergência, copiamos o código gerado e o restauramos com a mesma chave, ajustando as mensagens do terminal para ficarem claras.</p>
+
+                        <details class="code-box">
+                            <summary>📄 Ver Código-Fonte em Python (Cofre Digital)</summary>
+                            <pre>import base64
+
+def criptografar(texto, chave):
+    deslocamento = sum(ord(c) for c in chave) % 256
+    bytes_texto = texto.encode("utf-8")
+    cifrado = bytes([(b + deslocamento) % 256 for b in bytes_texto])
+    return base64.b64encode(cifrado).decode("utf-8")
+
+def descriptografar(codigo_b64, chave):
+    deslocamento = sum(ord(c) for c in chave) % 256
+    cifrado = base64.b64decode(codigo_b64.encode("utf-8"))
+    original = bytes([(b - deslocamento) % 256 for b in cifrado])
+    return original.decode("utf-8")
+
+opcao = input("1 - Criptografar | 2 - Descriptografar: ")
+msg = input("Digite a mensagem ou código: ")
+chave = input("Digite a chave secreta: ")
+
+if opcao == "1":
+    print("Código protegido:", criptografar(msg, chave))
+elif opcao == "2":
+    print("Mensagem restaurada:", descriptografar(msg, chave))</pre>
+                        </details>
+                    </div>
+
+                    <div class="interactive-panel">
+                        <h4>🧪 Testar Protótipo do Cofre Digital</h4>
+                        <p class="panel-hint">Criptografe uma senha ou contato e depois descriptografe usando a mesma chave:</p>
+
+                        <div class="form-group">
+                            <label for="cofre-msg">Mensagem confidencial ou código embaralhado:</label>
+                            <input type="text" id="cofre-msg" class="form-control" value="Contato Emergencia: (43) 99999-1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cofre-chave">Chave secreta:</label>
+                            <input type="text" id="cofre-chave" class="form-control" value="familia2026">
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="action-btn" onclick="executarCofre('criptografar')">🔒 Criptografar</button>
+                            <button type="button" class="action-btn secondary" onclick="executarCofre('descriptografar')">🔓 Descriptografar</button>
+                        </div>
+
+                        <div class="result-box">
+                            <small>Saída do sistema:</small>
+                            <strong id="cofre-resultado">Clique em "Criptografar" para gerar o código seguro.</strong>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ATIVIDADE 2 -->
+            <article id="ativ-2" class="doc-section">
+                <span class="part-badge">Atividade 2 • Explorando os LLMs & Engenharia de Prompt</span>
+                <h2>🧠 IA e Leitura Facilitada para Inclusão Digital</h2>
+                <p>Investigamos como mudanças na estrutura dos comandos dados a um Modelo de Linguagem (LLM) transformam respostas técnicas em textos claros para <b>idosos, pessoas com dislexia ou baixo letramento</b>.</p>
+
+                <div class="prompt-compare">
+                    <div class="prompt-card">
+                        <span class="prompt-badge bad">❌ Teste 1: Prompt Simples (Sem Refinamento)</span>
+                        <p><b>Comando enviado:</b> <i>"Explique esta bula de remédio para hipertensão."</i></p>
+                        <p><b>Resultado:</b> A IA gerou um parágrafo longo cheio de termos médicos (<i>"posologia", "vasodilatação periférica"</i>), mantendo a barreira de compreensão para o paciente.</p>
+                    </div>
+
+                    <div class="prompt-card refined">
+                        <span class="prompt-badge good">✅ Teste 2: Prompt Estruturado (Refinado)</span>
+                        <p><b>Comando enviado:</b> <i>"Atue como um agente de saúde comunitário. Reescreva estas instruções em Leitura Facilitada para uma pessoa idosa: use frases curtas (até 12 palavras), palavras simples do dia a dia, tópicos com horários claros e destaque sinais de alerta."</i></p>
+                        <p><b>Resultado:</b> Texto direto, organizado por horário (Manhã / Noite), sem jargões técnicos e com alerta visual claro.</p>
+                    </div>
+                </div>
+
+                <div class="info-callout">
+                    <h4>⚖️ Consciência Ética e Autonomia</h4>
+                    <p>O refinamento de prompts mostra que a IA não substitui profissionais da saúde, mas promove <b>autonomia digital</b>: quando guiada com empatia e critérios claros, elimina barreiras de linguagem.</p>
+                </div>
+            </article>
+
+            <!-- ATIVIDADE 3 -->
+            <article id="ativ-3" class="doc-section">
+                <span class="part-badge">Atividade 3 • Modelos Computacionais Avançados em Python</span>
+                <h2>🥗 Análise Nutricional Automatizada e Acessível</h2>
+
+                <div class="two-col-layout">
+                    <div>
+                        <h3>Como a Programação Democratiza a Saúde?</h3>
+                        <p>Idosos, pessoas em reabilitação alimentar ou com condições como <b>diabetes e hipertensão</b> precisam controlar diariamente calorias, carboidratos, fibras e sódio. Nosso modelo em Python aplica cálculo proporcional sobre tabelas nutricionais para entregar respostas imediatas.</p>
+
+                        <h3>Responsabilidade Ética e Clareza</h3>
+                        <p>Para evitar interpretações erradas, o sistema exibe as unidades de medida por extenso (<code>kcal</code>, <code>g</code>, <code>mg</code>), emite <b>alertas preventivos</b> quando o sódio ou carboidrato ultrapassa limites de atenção e informa que não substitui acompanhamento médico.</p>
+
+                        <details class="code-box">
+                            <summary>📄 Ver Código-Fonte em Python (Modelo Nutricional)</summary>
+                            <pre>ALIMENTOS = {
+    "arroz":   {"kcal": 130, "carb": 28.0, "fibras": 1.6, "sodio": 1},
+    "feijao":  {"kcal": 76,  "carb": 13.6, "fibras": 8.5, "sodio": 2},
+    "frango":  {"kcal": 159, "carb": 0.0,  "fibras": 0.0, "sodio": 50},
+    "salada":  {"kcal": 20,  "carb": 3.5,  "fibras": 2.4, "sodio": 12},
+    "embutido":{"kcal": 290, "carb": 2.5,  "fibras": 0.0, "sodio": 980}
+}
+
+alimento = input("Alimento: ").lower().strip()
+gramas = float(input("Quantidade em gramas: "))
+
+if alimento in ALIMENTOS:
+    fator = gramas / 100.0
+    dados = ALIMENTOS[alimento]
+    sodio_total = dados["sodio"] * fator
+    print(f"Calorias: {dados['kcal']*fator:.1f} kcal | Fibras: {dados['fibras']*fator:.1f} g | Sódio: {sodio_total:.0f} mg")
+    if sodio_total > 400:
+        print("ALERTA PREVENTIVO: Alto teor de sódio (atenção para hipertensos)!")</pre>
+                        </details>
+                    </div>
+
+                    <div class="interactive-panel">
+                        <h4>🧮 Simulador Nutricional Interativo</h4>
+                        <p class="panel-hint">Escolha um alimento e o peso em gramas para calcular proporcionalmente:</p>
+
+                        <div class="form-group">
+                            <label for="nutri-alimento">Selecione o alimento (base 100g):</label>
+                            <select id="nutri-alimento" class="form-control">
+                                <option value="arroz">🍚 Arroz Branco Cozido</option>
+                                <option value="feijao">🫘 Feijão Carioca Cozido</option>
+                                <option value="frango">🍗 Peito de Frango Grelhado</option>
+                                <option value="salada">🥗 Salada de Folhas e Legumes</option>
+                                <option value="embutido">🌭 Embutido / Ultraprocessado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nutri-gramas">Quantidade consumida (gramas):</label>
+                            <input type="number" id="nutri-gramas" class="form-control" value="150" min="1" max="2000">
+                        </div>
+
+                        <button type="button" class="action-btn full-btn" onclick="calcularNutricao()">Calcular Nutrientes</button>
+
+                        <div class="nutri-badges">
+                            <div class="nutri-stat"><small>Energia</small><strong id="res-kcal">195.0 kcal</strong></div>
+                            <div class="nutri-stat"><small>Carboidratos</small><strong id="res-carb">42.0 g</strong></div>
+                            <div class="nutri-stat"><small>Fibras Alimentares</small><strong id="res-fibras">2.4 g</strong></div>
+                            <div class="nutri-stat"><small>Sódio</small><strong id="res-sodio">2 mg</strong></div>
+                        </div>
+
+                        <div id="nutri-alerta" class="alert-banner ok">
+                            ✅ Valores equilibrados para a porção informada.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- ABA 2: ROBÓTICA & ACESSIBILIDADE (PARTES A ATÉ J)               -->
+        <!-- =============================================================== -->
+        <section id="tab-robotica" class="tab-content">
+
+            <nav class="sub-nav" aria-label="Navegação das partes de Robótica">
+                <a href="#parte-a">A. Apresentação</a>
+                <a href="#parte-b">B. Matriz de LEDs</a>
+                <a href="#parte-c">C. Código Morse</a>
+                <a href="#parte-d">D. Display</a>
+                <a href="#parte-e">E. Comparação</a>
+                <a href="#parte-f">F. Qualidade de Vida</a>
+                <a href="#parte-g">G. Uso de IA</a>
+                <a href="#parte-h">H. Melhoria</a>
+                <a href="#parte-i">I. Conclusão</a>
+                <a href="#parte-j">J. Fontes</a>
+            </nav>
+
+            <!-- PARTE A -->
+            <article id="parte-a" class="doc-section">
+                <span class="part-badge">Parte A • Apresentação do Tema</span>
+                <h1>Tecnologia que Conecta: Comunicação, Autonomia e Inclusão</h1>
+                <p class="group-meta"><b>Integrantes do Grupo:</b> [Preencher com os nomes dos integrantes da equipe]</p>
+                
+                <div class="motriz-banner">
+                    <strong>🎯 Questão Motriz:</strong> “Como a ciência, a tecnologia e as ferramentas de Inteligência Artificial podem contribuir para a melhoria da qualidade de vida das pessoas?”
+                </div>
+
+                <div class="cards-grid">
+                    <div class="mini-card">
+                        <h3>♿ Acessibilidade</h3>
+                        <p>Garantir que qualquer pessoa, com ou sem deficiência, consiga usar espaços, equipamentos e informações com segurança e autonomia, sem depender o tempo todo de terceiros.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>💬 Comunicação</h3>
+                        <p>Processo de expressar ideias, necessidades e sentimentos e compreender o que os outros transmitem, seja por fala, escrita, gestos, sons ou sinais visuais.</p>
+                    </div>
+                    <div class="mini-card">
+                        <h3>🌱 Qualidade de Vida</h3>
+                        <p>Ter bem-estar físico, emocional e social, dignidade para tomar decisões próprias e participação ativa na escola, na família e na sociedade.</p>
+                    </div>
+                </div>
+
+                <div class="info-callout">
+                    <h4>🚧 Situação Concreta de Barreira na Comunicação</h4>
+                    <p>Imagine um paciente internado em um hospital ou um estudante com paralisia motora severa (ou afasia após um AVC) que não consegue falar nem escrever com caneta. Em um corredor movimentado ou quarto compartilhado, essa pessoa pode sentir dor, sede ou falta de ar e não conseguir avisar quem está por perto.</p>
+                    <p><b>O que vamos investigar:</b> Nosso grupo investigará como três recursos da Robótica — <b>Matriz de LEDs, Código Morse e Display</b> — funcionam na prática e como podem reduzir barreiras de comunicação para promover mais autonomia e qualidade de vida.</p>
+                </div>
+            </article>
+
+            <!-- PARTE B -->
+            <article id="parte-b" class="doc-section">
+                <span class="part-badge">Parte B • Recurso 1</span>
+                <h2>🔲 Matriz de LEDs</h2>
+
+                <div class="two-col-layout">
+                    <div>
+                        <h3>Como funciona?</h3>
+                        <p>Uma matriz de LEDs é uma placa formada por diodos emissores de luz organizados em <b>linhas e colunas</b> (como uma grade 8x8). Ao enviar corrente elétrica para coordenadas específicas (<i>multiplexação</i>), o microcontrolador acende apenas os pontos desejados, formando desenhos, setas ou símbolos luminosos.</p>
+
+                        <h3>Símbolos que comunicam</h3>
+                        <ul class="clean-list">
+                            <li><b>Emoções:</b> Rosto sorridente (bem-estar/alegria) ou rosto triste (desconforto/dor).</li>
+                            <li><b>Necessidades e Avisos:</b> Exclamação <code>!</code> (atenção), cruz ou <code>SOS</code> (ajuda urgente).</li>
+                            <li><b>Direção:</b> Setas apontando para saída de emergência, rampa acessível ou sala de atendimento.</li>
+                        </ul>
+
+                        <h3>Situação concreta de uso</h3>
+                        <p>Em uma escola ou hospital barulhento, uma matriz de LEDs na mesa de um aluno não verbal ou na parede do corredor mostra um ícone de <b>“Ajuda”</b> ou uma <b>seta direcional</b>, facilitando o entendimento imediato mesmo para pessoas surdas ou não alfabetizadas.</p>
+
+                        <div class="pros-cons">
+                            <div class="pros"><b>✅ Vantagens:</b> Alta luminosidade, resposta instantânea e comunicação visual por ícones simples.</div>
+                            <div class="cons"><b>⚠️ Limitações:</b> Baixa resolução para frases longas; perda de visibilidade sob sol forte ou grandes distâncias; exige que o observador entenda o símbolo exibido.</div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-pan
